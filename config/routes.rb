@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :muscles
   resources :exercises
+  resources :muscles do
+    resources :exercises, only: [:index, :new]
+  end
   resources :workout_exercises
   resources :workouts
   resources :users
