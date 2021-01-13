@@ -1,5 +1,5 @@
-<h1>All Exercises</h1>
+<h1><%= exercise_show_title %></h1>
 
 <%= render(@exercises) || "No Exercises to display" %>
 
-<%= button_to "Add a new exercise", new_exercise_path, method: :get %>
+<%= new_exercise_link %>
