@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_143334) do
+ActiveRecord::Schema.define(version: 2021_01_13_171256) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "information"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "muscle_id", null: false
+    t.index ["muscle_id"], name: "index_exercises_on_muscle_id"
   end
 
   create_table "muscles", force: :cascade do |t|
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_143334) do
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "exercises", "muscles"
   add_foreign_key "workout_exercises", "exercises"
   add_foreign_key "workout_exercises", "workouts"
   add_foreign_key "workouts", "users"
