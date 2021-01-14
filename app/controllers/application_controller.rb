@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     
     helper_method :current_user
 
+    def current_uri
+        @current_uri ||= request.env['PATH_INFO']
+    end
+    
+    helper_method :current_uri
+
     def login(user)
         session[:user_id] = user.id
     end
@@ -22,6 +28,13 @@ class ApplicationController < ActionController::Base
     end
 
     def redirect_if_not_admin
-        return redirect_to root_path unless current_user.admin
+        if !current_user.admin
+            if request.method == "GET"
+                render 'layouts/error'
+            else
+                return redirect_to root_path
+            end
+        end
     end
+
 end
