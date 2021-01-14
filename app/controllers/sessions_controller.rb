@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to @user
     else
-    @user = User.new
-    render :new
+      @user = User.new
+      render :new
     end
   end
 
