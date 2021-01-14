@@ -1,19 +1,9 @@
 class ApplicationController < ActionController::Base
     before_action :redirect_if_not_logged_in
 
+    include ApplicationHelper
+
     private
-
-    def current_user
-        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    end
-    
-    helper_method :current_user
-
-    def current_uri
-        @current_uri ||= request.env['PATH_INFO']
-    end
-    
-    helper_method :current_uri
 
     def login(user)
         session[:user_id] = user.id
