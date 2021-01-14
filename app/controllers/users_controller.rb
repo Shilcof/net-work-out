@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     
     def destroy # require current user or admin check -- delete dependant workouts, but not muscles & exercises
         @user.destroy
+        redirect_to users_path
     end
 
     private
