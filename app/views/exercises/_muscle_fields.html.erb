@@ -1,0 +1,14 @@
+<div>
+    <%= f.collection_select :muscle_id, Muscle.all, :id, :name %>
+</div>
+
+<%= f.fields_for :muscle do |muscle_fields| %>
+    <div>
+        <%= muscle_fields.label :name %>
+        <%= muscle_fields.text_field :name %>
+    </div>
+    <div>
+        <%= muscle_fields.label :information %>
+        <%= muscle_fields.text_field :information %>
+    </div>
+<% end %>

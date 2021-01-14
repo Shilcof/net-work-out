@@ -16,11 +16,13 @@ class ExercisesController < ApplicationController
             @exercise = @muscle.exercises.build
         else
             @exercise = Exercise.new
+            @exercise.build_muscle
         end
     end
     
     def create
         @exercise = Exercise.new(exercise_params)
+        byebug
         if @exercise.save
             redirect_to @exercise
         else
@@ -50,7 +52,7 @@ class ExercisesController < ApplicationController
     private
 
     def exercise_params
-        params.require(:exercise).permit(:name, :information)
+        params.require(:exercise).permit(:name, :information, :muscle_id, muscle_attributes: [:name, :information])
     end
 
     def set_exercise
