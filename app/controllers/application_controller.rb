@@ -19,12 +19,16 @@ class ApplicationController < ActionController::Base
         session[:user_id] = user.id
     end
 
+    def redirect_to_root
+        return redirect_to root_path
+    end
+
     def redirect_if_not_logged_in
-        return redirect_to root_path unless current_user
+        redirect_to_root unless current_user
     end
 
     def redirect_if_logged_in
-        return redirect_to root_path if current_user
+        redirect_to_root if current_user
     end
 
     def redirect_if_not_admin
@@ -32,7 +36,7 @@ class ApplicationController < ActionController::Base
             if request.method == "GET"
                 render 'layouts/page_not_found', status: 404
             else
-                return redirect_to root_path
+                redirect_to_root
             end
         end
     end
