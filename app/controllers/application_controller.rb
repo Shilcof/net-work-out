@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     def redirect_if_not_admin
         if !current_user.admin
             if request.method == "GET"
-                render 'layouts/error'
+                render 'layouts/page_not_found', status: 404
             else
                 return redirect_to root_path
             end
