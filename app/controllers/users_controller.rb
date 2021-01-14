@@ -2,14 +2,13 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
     skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
     before_action :redirect_if_logged_in, only: [:new, :create]
-    before_action :redirect_if_not_admin, except: [:new, :create]
+    before_action :redirect_if_not_admin, except: [:new, :create, :show]
 
     def index # admin features
         @users = User.all
     end
     
     def new
-        @user = User.new
     end
     
     def create
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
             login(@user)
             redirect_to @user
         else
-            render :new
+            redirect_to signup_path
         end
     end
     
