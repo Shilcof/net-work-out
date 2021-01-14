@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
     skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
+    before_action :redirect_if_logged_in, only: [:new, :create]
 
     def index # admin features
+        redirect_if_not_admin
         @users = User.all
     end
     
