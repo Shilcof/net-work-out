@@ -22,7 +22,6 @@ class ExercisesController < ApplicationController
     
     def create
         @exercise = Exercise.new(exercise_params)
-        byebug
         if @exercise.save
             redirect_to @exercise
         else
