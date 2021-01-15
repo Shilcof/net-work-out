@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :workout_exercises
   resources :workouts
 
-  # get '/:username', to: 'users#show', as: :user
-  resources :users, except: [:new]
-
+  resources :users, except: [:new, :show, :edit]
+  get '/:username', to: 'users#show', as: :profile # rename the as here
+  get '/:username/edit', to: 'users#edit', as: :edit_profile
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
