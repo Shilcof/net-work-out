@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Omniauth for external authentications
 gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
 
 group :development, :test do
