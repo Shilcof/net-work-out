@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'exercises#index'
 
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
+
   get 'signup', to: 'users#new'
 
   get 'login', to: 'sessions#new'
