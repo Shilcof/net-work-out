@@ -1,0 +1,35 @@
+<%= form_for @workout do |f| %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+    <div>
+        <%= f.label :workout_exercises %>
+        <%= f.fields_for :workout_exercises do |we_fields| %>
+            <div>
+                <%= we_fields.label :exercise_id %>
+                <%= we_fields.collection_select :exercise_id, Exercise.all, :id, :name %>
+            </div>
+            <div>
+                <%= we_fields.label :set %>
+                <%= we_fields.fields_for :set do |set_fields| %>
+                <div>
+                    <%= set_fields.label :reps %>
+                    <%= set_fields.number_field :reps %>
+                </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <%= f.submit %>
+<% end %>
+
+
+
+
+
+
