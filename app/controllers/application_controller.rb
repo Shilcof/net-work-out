@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
 
     def redirect_if_logged_in # Login, Signup
-        redirect_to_root if current_user
+        redirect_to_root if logged_in?
     end
 
     def redirect_if_not_admin # Admin actions (including /users) - skip redirect_if_not_permitted and add this
@@ -34,11 +34,11 @@ class ApplicationController < ActionController::Base
     def redirect_if_not_permitted # All non get requests and edit routes if not logged in and no permission to edit
         if !admin?
             if request.method != "GET"
-                redirect_to_root unless current_user && permitted # Malicious post requests
+                redirect_to_root unless logged_in? && permitted # Malicious post requests
             elsif action_name == "edit"
-                page_not_found unless current_user && permitted # Not permitted to edit this resource error add
+                page_not_found unless logged_in? && permitted # Not permitted to edit this resource error add
             elsif action_name == "new"
-                page_not_found unless current_user # Log in to create this resource error add
+                page_not_found unless logged_in? # Log in to create this resource error add
             end
         end
     end
