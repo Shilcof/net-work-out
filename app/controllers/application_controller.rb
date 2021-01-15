@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         redirect_to_root if logged_in?
     end
 
-    def redirect_if_not_admin # Admin actions (including /users) - skip redirect_if_not_permitted and add this
+    def redirect_if_not_admin # Admin actions (including /users) - skip redirect_if_not_permitted and add this when all error pages are operational
         if !admin?
             if request.method == "GET"
                 page_not_found
