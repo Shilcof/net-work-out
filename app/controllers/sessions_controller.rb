@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    user = User.from_omniauth(auth)
-    if @user.valid
+    @user = User.from_omniauth(auth)
+    if @user.valid?
       login(@user)
       redirect_to profile_path(@user.username)
     else
