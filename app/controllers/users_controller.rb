@@ -49,6 +49,6 @@ class UsersController < ApplicationController
     end
 
     def set_user_by_username
-        @user = User.find_by_username(params[:username])
+        @user = User.find_by_username!(params[:username])
     end
 end

@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     before_action :set_object, :redirect_if_not_permitted
 
+    rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
+
     include ApplicationHelper
 
     private
