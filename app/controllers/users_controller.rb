@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
     before_action :set_user_by_username, only: [:show, :edit]
-    skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
     before_action :redirect_if_logged_in, only: [:new, :create]
-    before_action :redirect_if_not_admin, except: [:new, :create, :show]
+    skip_before_action :redirect_if_not_permitted, only: [:new, :create]
+    before_action :redirect_if_not_admin, only: [:index]
 
     def index
         @users = User.all
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login(@user)
-            redirect_to @user
+            redirect_to profile_path(@user.username)
         else
             redirect_to signup_path
         end
@@ -25,12 +25,13 @@ class UsersController < ApplicationController
     end
     
     def edit # require current user or admin check
+        redirect_if_not_permitted
     end
     
     def update # require current user or admin checks
         @user.update(user_params)
         if @user.save
-            redirect_to @user
+            redirect_to profile_path(@user.username)
         else
             render :edit
         end

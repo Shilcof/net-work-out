@@ -1,5 +1,4 @@
 class ExercisesController < ApplicationController
-    skip_before_action :redirect_if_not_logged_in, only: [:index]
 
     def index
         if params[:muscle_id]

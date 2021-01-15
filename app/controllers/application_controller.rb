@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :redirect_if_not_logged_in
-    before_action :set_object
+    before_action :set_object, :redirect_if_not_permitted
 
     include ApplicationHelper
 
@@ -10,26 +9,42 @@ class ApplicationController < ActionController::Base
         session[:user_id] = user.id
     end
 
+    def page_not_found
+        return render 'errors/page_not_found', status: 404
+    end
+
     def redirect_to_root
         return redirect_to root_path
     end
 
-    def redirect_if_not_logged_in
-        redirect_to_root unless current_user
-    end
-
-    def redirect_if_logged_in
+    def redirect_if_logged_in # Login, Signup
         redirect_to_root if current_user
     end
 
-    def redirect_if_not_admin
-        if !current_user.admin
+    def redirect_if_not_admin # Admin actions (including /users) - skip redirect_if_not_permitted and add this
+        if !admin?
             if request.method == "GET"
-                render 'layouts/page_not_found', status: 404
+                page_not_found
             else
                 redirect_to_root
             end
         end
+    end
+
+    def redirect_if_not_permitted # All non get requests and edit routes if not logged in and no permission to edit
+        if !admin?
+            if request.method != "GET"
+                redirect_to_root unless current_user && permitted # Malicious post requests
+            elsif action_name == "edit"
+                page_not_found unless current_user && permitted # Not permitted to edit this resource error add
+            elsif action_name == "new"
+                page_not_found unless current_user # Log in to create this resource error add
+            end
+        end
+    end
+
+    def permitted
+        get_object ? permission_to_edit?(get_object) : true
     end
 
     def set_object
@@ -41,17 +56,9 @@ class ApplicationController < ActionController::Base
     end
 
     def get_object
-        if params[:id]
+        if params[:id] || params[:username]
             object = _prefixes[0].singularize
             instance_variable_get("@#{object}")
-        end
-    end
-
-    def permission_to_edit?(object)
-        if object.class == User
-            object == current_user
-        else
-            object.try(user_id) == current_user.id
         end
     end
 
