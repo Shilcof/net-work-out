@@ -1,5 +1,4 @@
 class MusclesController < ApplicationController
-    before_action :set_muscle, only: [:show, :edit, :update, :destroy]
 
     def index
         @muscles = Muscle.all
@@ -41,9 +40,5 @@ class MusclesController < ApplicationController
 
     def muscle_params
         params.require(:muscle).permit(:name, :information)
-    end
-
-    def set_muscle
-        @muscle = Muscle.find(params[:id])
     end
 end

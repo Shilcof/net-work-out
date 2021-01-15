@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:update, :destroy]
     before_action :set_user_by_username, only: [:show, :edit]
     skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
     before_action :redirect_if_logged_in, only: [:new, :create]
@@ -47,10 +46,6 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation, :admin)
-    end
-
-    def set_user
-        @user = User.find(params[:id])
     end
 
     def set_user_by_username

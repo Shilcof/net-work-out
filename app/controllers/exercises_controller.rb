@@ -1,5 +1,4 @@
 class ExercisesController < ApplicationController
-    before_action :set_exercise, only: [:show, :edit, :update, :destroy]
     skip_before_action :redirect_if_not_logged_in, only: [:index]
 
     def index
@@ -53,9 +52,5 @@ class ExercisesController < ApplicationController
 
     def exercise_params
         params.require(:exercise).permit(:name, :information, :muscle_id, muscle_attributes: [:name, :information])
-    end
-
-    def set_exercise
-        @exercise = Exercise.find(params[:id])
     end
 end

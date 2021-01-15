@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :redirect_if_not_logged_in
+    before_action :set_object
 
     include ApplicationHelper
 
@@ -28,6 +29,14 @@ class ApplicationController < ActionController::Base
             else
                 redirect_to_root
             end
+        end
+    end
+
+    def set_object
+        if params[:id]
+            object = _prefixes[0].singularize
+            instance = object.capitalize.constantize.find(params[:id])
+            instance_variable_set("@#{object}", instance)
         end
     end
 
