@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     def edit # require current user or admin check
     end
     
-    def update # require current user or admin check
-        byebug
+    def update # require current user or admin checks
         @user.update(user_params)
         if @user.save
             redirect_to @user

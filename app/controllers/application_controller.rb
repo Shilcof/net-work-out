@@ -40,4 +40,19 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def get_object
+        if params[:id]
+            object = _prefixes[0].singularize
+            instance_variable_get("@#{object}")
+        end
+    end
+
+    def permission_to_edit?(object)
+        if object.class == User
+            object == current_user
+        else
+            object.try(user_id) == current_user.id
+        end
+    end
+
 end
