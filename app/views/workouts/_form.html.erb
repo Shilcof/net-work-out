@@ -12,7 +12,7 @@
         <%= f.fields_for :workout_exercises do |we_fields| %>
             <div>
                 <%= we_fields.label :exercise_id %>
-                <%= we_fields.collection_select :exercise_id, Exercise.all, :id, :name %>
+                <%= we_fields.collection_select :exercise_id, @exercises, :id, :name, {include_blank: 'Select an exercise'} %>
             </div>
             <div>
                 <%= we_fields.label :sets %>

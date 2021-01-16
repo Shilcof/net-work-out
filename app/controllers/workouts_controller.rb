@@ -11,14 +11,19 @@ class WorkoutsController < ApplicationController
     
     def new
         @workout = Workout.new
+        @exercises = Exercise.all
         5.times {@workout.workout_exercises.build}
     end
     
     def create
-        @workout = Workout.new(workout_params)
+        @workout = current_user.workouts.create
+        @workout.update(workout_params)
         if @workout.save
             redirect_to @workout
         else
+            @workout.destroy
+            @workout= Workout.new(workout_params)
+            @exercises = Exercise.all
             render :new
         end
     end
@@ -45,6 +50,6 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.require(:workout).permit(:name, :description, :public, workout_exercises_attributes: [:exercise_id])
+        params.require(:workout).permit(:name, :information, :public, workout_exercises_attributes: [:exercise_id, :sets, :reps])
     end
 end

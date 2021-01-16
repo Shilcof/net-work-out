@@ -1,7 +1,7 @@
 <h1><%= @workout.name %></h1>
 <h3><%= @workout.information %></h3>
-<%= @workout.workout_exercises.each do |we| %>
+<% @workout.workout_exercises.each do |we| %>
     <h4><%= we.exercise.name %></h4>
     <h4><%= we.sets %></h4>
     <h4><%= we.reps %></h4>
-<%= end %>
+<% end %>

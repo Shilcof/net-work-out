@@ -7,9 +7,9 @@ class Workout < ApplicationRecord
 
   def workout_exercises_attributes=(workout_exercises_attributes)
     workout_exercises.each{ |we| we.destroy }
-    workout_exercises_attributes.each_with_index do |attributes, i|
-      attributes[exercise_number] = i
-      workout_exercises.each.create(attributes)
+    workout_exercises_attributes.each do |i, attributes|
+      attributes[:exercise_number] = i.to_i
+      self.workout_exercises.build(attributes) if attributes[:exercise_id].present?
     end
   end
 end
