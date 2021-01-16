@@ -3,6 +3,7 @@ class CreateWorkoutExercises < ActiveRecord::Migration[6.1]
     create_table :workout_exercises do |t|
       t.integer :sets
       t.integer :reps
+      t.integer :exercise_number
       t.belongs_to :workout, null: false, foreign_key: true
       t.belongs_to :exercise, null: false, foreign_key: true
 

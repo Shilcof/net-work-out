@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_143334) do
   create_table "workout_exercises", force: :cascade do |t|
     t.integer "sets"
     t.integer "reps"
+    t.integer "exercise_number"
     t.integer "workout_id", null: false
     t.integer "exercise_id", null: false
     t.datetime "created_at", precision: 6, null: false
