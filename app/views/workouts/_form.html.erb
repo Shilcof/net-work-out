@@ -4,8 +4,8 @@
         <%= f.text_field :name %>
     </div>
     <div>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
+        <%= f.label :information %>
+        <%= f.text_field :information %>
     </div>
     <div>
         <%= f.label :workout_exercises %>
@@ -15,13 +15,12 @@
                 <%= we_fields.collection_select :exercise_id, Exercise.all, :id, :name %>
             </div>
             <div>
-                <%= we_fields.label :set %>
-                <%= we_fields.fields_for :set do |set_fields| %>
-                <div>
-                    <%= set_fields.label :reps %>
-                    <%= set_fields.number_field :reps %>
-                </div>
-                <% end %>
+                <%= we_fields.label :sets %>
+                <%= we_fields.number_field :sets %>
+            </div>
+            <div>
+                <%= we_fields.label :reps %>
+                <%= we_fields.number_field :reps %>
             </div>
         <% end %>
     </div>
