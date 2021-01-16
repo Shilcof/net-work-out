@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 DATA = {
-    muscle_keys: [:name, :information],
+    muscle_keys: ["name", "information"],
     muscles: [
         ["Trapezius (Traps)", "The trapezius is a large paired surface muscle that extends longitudinally from the occipital bone to the 
         lower thoracic vertebrae of the spine and laterally to the spine of the scapula. It moves the scapula and supports the arm.\n\n
@@ -60,7 +60,7 @@ DATA = {
         Due to bypassing the scapulothoracic joints and attaching directly to the spine, the actions the latissimi dorsi have on moving the arms 
         can also influence the movement of the scapulae, such as their downward rotation during a pull up."]
     ],
-    exercise_keys: [:name, :information, :muscle_id],
+    exercise_keys: ["name", "information", "muscle_id"],
     exercises: [
         ["Shrug ", "The lifter stands erect, hands about shoulder width apart, and slowly raises the shoulders as high as possible, 
         and then slowly lowers them, while not bending the elbows, or moving the body at all. 
@@ -173,8 +173,8 @@ DATA = {
 
 
 def main
-    make_muscles
-    make_exercises
+    # make_muscles
+    # make_exercises
 end
 
 def make_muscles
@@ -196,3 +196,5 @@ def make_exercises
         new_exercise.save
     end
 end
+
+main
