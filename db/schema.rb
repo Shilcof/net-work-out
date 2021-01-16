@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_162713) do
+ActiveRecord::Schema.define(version: 2021_01_13_143334) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "information"
+    t.integer "muscle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "muscle_id", null: false
     t.index ["muscle_id"], name: "index_exercises_on_muscle_id"
   end
 
@@ -30,15 +30,21 @@ ActiveRecord::Schema.define(version: 2021_01_15_162713) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "name"
+    t.string "email"
     t.string "password_digest"
     t.boolean "admin", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "uid"
     t.string "provider"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   create_table "workout_exercises", force: :cascade do |t|
+    t.integer "sets"
+    t.integer "reps"
     t.integer "workout_id", null: false
     t.integer "exercise_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -49,8 +55,9 @@ ActiveRecord::Schema.define(version: 2021_01_15_162713) do
 
   create_table "workouts", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.string "information"
     t.boolean "public"
+    t.boolean "published"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
