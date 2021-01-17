@@ -5,7 +5,7 @@ class WorkoutsController < ApplicationController
             @user = User.find_by_username!(params[:username])
             @workouts = @user.workouts
         else
-            @workouts = Workout.all
+            @workouts = Workout.all.includes(:muscles)
         end
     end
     
@@ -51,7 +51,7 @@ class WorkoutsController < ApplicationController
             @workout.workout_exercises.build
 
         elsif params[:remove_exercise]
-            
+
             if !workout_params[:workout_exercises_attributes].blank?
                 workout_params[:workout_exercises_attributes].values.each do |attributes|
                     if attributes[:id]
