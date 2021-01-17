@@ -12,20 +12,22 @@ class WorkoutsController < ApplicationController
     def new
         @workout = Workout.new
         @exercises = Exercise.all
-        5.times {@workout.workout_exercises.build}
+        @workout.workout_exercises.build
     end
     
     def create
-        @workout = current_user.workouts.create
-        @workout.update(workout_params)
-        if @workout.save
-            redirect_to @workout
-        else
-            @workout.destroy
-            @workout= Workout.new(workout_params)
-            @exercises = Exercise.all
-            render :new
+        @workout = current_user.workouts.build(workout_params)
+        if params[:add_exercise]
+            @workout.workout_exercises.build
+        elsif params[:remove_exercise]
+        elsif @workout.save
+            @workout.update(nested_params)
+            @workout.save
+            return redirect_to @workout
         end
+        @workout.write_workout_exercises(nested_params) if nested_params.values[0]
+        @exercises = Exercise.all
+        render :new
     end
     
     def show
@@ -50,6 +52,10 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.require(:workout).permit(:name, :information, :public, workout_exercises_attributes: [:exercise_id, :sets, :reps])
+        params.require(:workout).permit(:name, :information, :public)
+    end
+
+    def nested_params
+        params.require(:workout).permit(workout_exercises_attributes: [:exercise_id, :sets, :reps, :_destroy])
     end
 end

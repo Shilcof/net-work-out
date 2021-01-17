@@ -22,8 +22,14 @@
                 <%= we_fields.label :reps %>
                 <%= we_fields.number_field :reps %>
             </div>
+            <div>
+                <%= we_fields.label :_destroy, 'delete' %>
+                <%= we_fields.check_box :_destroy %>
+            </div>
         <% end %>
     </div>
+    <%= f.submit 'Add an exercise', :name => "add_exercise" %>
+    <%= f.submit 'Delete marked exercises', :name => "remove_exercise" %>
     <%= f.submit %>
 <% end %>
 
