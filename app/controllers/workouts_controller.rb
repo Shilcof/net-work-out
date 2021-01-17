@@ -21,7 +21,6 @@ class WorkoutsController < ApplicationController
             @workout.workout_exercises.build
         elsif params[:remove_exercise]
         elsif @workout.save
-            @workout.save
             return redirect_to @workout
         end
         @exercises = Exercise.all
@@ -32,15 +31,43 @@ class WorkoutsController < ApplicationController
     end
     
     def edit
+        @exercises = Exercise.all
     end
     
     def update
-        @workout.update(workout_params)
-        if @workout.save
-            redirect_to @workout
-        else
-            render :edit
+        @workout.attributes=(info_params)
+        if params[:add_exercise]
+
+            if !workout_params[:workout_exercises_attributes].blank?
+                workout_params[:workout_exercises_attributes].values.each do |attributes|
+                    if attributes[:id]
+                        WorkoutExercise.find(attributes[:id]).update(attributes.except(:_destroy, :id))
+                    else
+                        @workout.workout_exercises.build(attributes.except(:_destroy)) 
+                    end
+                end
+            end
+
+            @workout.workout_exercises.build
+
+        elsif params[:remove_exercise]
+            
+            if !workout_params[:workout_exercises_attributes].blank?
+                workout_params[:workout_exercises_attributes].values.each do |attributes|
+                    if attributes[:id]
+                        WorkoutExercise.find(attributes[:id]).update(attributes.except(:_destroy, :id)) 
+                        WorkoutExercise.find(attributes[:id]).destroy if attributes[:_destroy] == "1"
+                    else
+                        @workout.workout_exercises.build(attributes.except(:_destroy)) unless attributes[:_destroy] == "1"
+                    end
+                end
+            end
+
+        elsif @workout.update(workout_params)
+            return redirect_to @workout
         end
+        @exercises = Exercise.all
+        render :edit
     end
     
     def destroy
@@ -50,10 +77,10 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.require(:workout).permit(:name, :information, :public, workout_exercises_attributes: [:exercise_id, :sets, :reps, :_destroy])
+        params.require(:workout).permit(:name, :information, :public, workout_exercises_attributes: [:exercise_id, :sets, :reps, :_destroy, :id])
     end
 
-    def nested_params
-        params.require(:workout).permit(workout_exercises_attributes: [:exercise_id, :sets, :reps, :_destroy])
+    def info_params
+        params.require(:workout).permit(:name, :information, :public)
     end
 end
