@@ -1,0 +1,7 @@
+<h1><%= workout.name %></h1>
+<h3><%= workout.information %></h3>
+<p>
+    <% workout.muscles.uniq.each do |muscle| %>
+        <%= link_to muscle.name, muscle %>
+    <% end %>
+</p>
