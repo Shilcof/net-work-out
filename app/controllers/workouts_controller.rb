@@ -17,15 +17,13 @@ class WorkoutsController < ApplicationController
     
     def create
         @workout = current_user.workouts.build(workout_params)
-        if params[:add_exercise]
+        if params[:add_exercise] 
             @workout.workout_exercises.build
         elsif params[:remove_exercise]
         elsif @workout.save
-            @workout.update(nested_params)
             @workout.save
             return redirect_to @workout
         end
-        @workout.write_workout_exercises(nested_params) if nested_params.values[0]
         @exercises = Exercise.all
         render :new
     end
@@ -52,7 +50,7 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.require(:workout).permit(:name, :information, :public)
+        params.require(:workout).permit(:name, :information, :public, workout_exercises_attributes: [:exercise_id, :sets, :reps, :_destroy])
     end
 
     def nested_params

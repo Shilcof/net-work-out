@@ -1,7 +1,5 @@
 class WorkoutExercise < ApplicationRecord
   belongs_to :workout
   belongs_to :exercise
-
-  def _destroy=(v)
-  end
+  validates :exercise_id, :sets, :reps, presence: true
 end
