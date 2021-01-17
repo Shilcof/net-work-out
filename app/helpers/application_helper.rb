@@ -28,4 +28,17 @@ module ApplicationHelper
         logged_in? ? permission_to_edit?(object) : false
     end
 
+    def navbar_options
+        if false #username_required
+        elsif admin?
+            render 'layouts/admin_nav'
+        elsif logged_in?
+        else
+        end
+        # admin
+        # logged in
+        # logged out
+        # username required
+    end
+
 end
