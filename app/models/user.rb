@@ -3,7 +3,12 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :username, :email, presence: true
+    validates :username, presence: true, unless: :oauth
+    validates :email, presence: true
+
+    def oauth
+        !!uid
+    end
 
     def self.from_omniauth(auth)
         byebug
