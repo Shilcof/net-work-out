@@ -10,6 +10,10 @@ class User < ApplicationRecord
         !!uid
     end
 
+    def self.find_by_username_or_email(query)
+        find_by_username(query) || find_by_email(query)
+    end
+
     def self.from_omniauth(auth)
         byebug
         User.find_or_create_by(uid: auth[:uid], provider: auth[:provider]) do |u|

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:user][:username])
+    @user = User.find_by_username_or_email(params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
       login(@user)
       redirect_to profile_path(@user.username)
