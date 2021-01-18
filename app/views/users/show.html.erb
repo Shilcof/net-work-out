@@ -14,6 +14,11 @@
     </aside>
 
     <div class="col-md-9">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h3>Workouts for <%= @user.username %></h3>
+            </div>
+        </div>
         <%= render @workouts %>
     </div>
 </div>

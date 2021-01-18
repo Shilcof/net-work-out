@@ -1,7 +1,23 @@
-<h1><%= workout.name %></h1>
-<h3><%= workout.information %></h3>
-<p>
-    <% workout.muscles.uniq.each do |muscle| %>
-        <%= link_to muscle.name, muscle %>
-    <% end %>
-</p>
+<div class="card mb-3">
+    <a href="<%= workout_path(workout) %>">
+        <div class="card-header text-dark">
+            <div class="row">
+                <div class="col-md-8">
+                    <%= workout.name %>
+                </div>
+                <div class="col-md-4 text-right">
+                    <%= ago_in_words(workout.created_at) %>
+                </div>
+            </div>
+        </div>
+    </a>
+    <div class="card-body">
+        <p class="card-text">Created by: <%= link_to workout.user.username, profile_path(workout.user.username) %></p>
+        <p class="card-text"><%= workout.information %></p>
+        <p class="card-text">Muscles trained:
+            <% workout.muscles.uniq.each do |muscle| %>
+                <%= link_to muscle.name, muscle %>
+            <% end %>
+        </p>
+    </div>
+</div>
