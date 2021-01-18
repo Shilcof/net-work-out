@@ -1,1 +1,14 @@
-<%= render @workouts %>
+<%= form_tag workouts_path, class: "card bg-light rounded mb-3", method: :get do %>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="col-md-9">
+                <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search for a workout by title" %>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<%= render(@workouts) || "No workouts found for this query" %>
