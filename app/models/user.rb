@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :username, presence: true, unless: :oauth
+    validates :username, presence: true, on: :create, unless: :oauth
+    validates :username, presence: true, on: :update
     validates :email, presence: true
 
     def oauth
