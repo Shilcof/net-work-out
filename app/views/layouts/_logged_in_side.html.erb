@@ -1,2 +1,2 @@
 <%= link_to "My profile", profile_path(current_user.username), class: "nav-item nav-link text-dark" %>
-<%= link_to "Log out", logout_path, class: "nav-item nav-link text-dark" %>
+<%= link_to "Log out", logout_path, class: "nav-item nav-link text-dark", method: :post %>
