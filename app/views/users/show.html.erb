@@ -4,6 +4,7 @@
             <div class="py-3">
                 <%= content_tag :h3, @user.username %>
                 <%= content_tag :p, @user.name if @user.name %>
+                <%= content_tag :p, @user.bio if @user.bio %>
                 <%= link_to "Workouts", my_workouts_path(@user.username) %><br>
                 <%= link_to "Starred workouts", starred_workouts_path(@user.username) %>
                 <%= content_tag :p, "Joined #{ago_in_words(@user.created_at)}" %>
