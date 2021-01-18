@@ -1,14 +1,14 @@
 <div class="card mb-3">
-    <div class="card-body">
+    <div class="card-body bg-light">
         <div class="row">
             <div class="col-md-4">
                 <div class="text-center pt-2"><%= user.username %></div>
             </div>
             <div class="col-md-4">
-                <%= button_to "View profile", profile_path(user.username), method: :get, class: "btn btn-outline-primary btn-block" %>
+                <%= button_to "View profile", profile_path(user.username), method: :get, class: "btn btn-outline-primary btn-block bg-white" %>
             </div>
             <div class="col-md-4">
-                <%= button_to "Delete user", user, method: :delete, class: "btn btn-outline-danger btn-block" %>
+                <%= button_to "Delete user", user, method: :delete, class: "btn btn-outline-danger btn-block bg-white" %>
             </div>
         </div>
     </div>
