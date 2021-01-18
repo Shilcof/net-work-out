@@ -16,10 +16,12 @@
         <div class="col-md-6 mb-3">
             <%= f.label :password %>
             <%= f.password_field :password, class: form_class(@user, :password)  %>
+            <%= invalid_feedback(@user, :password) %>
         </div>
         <div class="col-md-6 mb-3">
             <%= f.label :password_confirmation %>
             <%= f.password_field :password_confirmation, class: form_class(@user, :password_confirmation)  %>
+            <%= invalid_feedback(@user, :password_confirmation) %>
         </div>
     </div>
         <div class="form-group">
