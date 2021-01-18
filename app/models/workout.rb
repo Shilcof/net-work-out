@@ -7,4 +7,6 @@ class Workout < ApplicationRecord
   validates :name, :information, presence: true
 
   accepts_nested_attributes_for :workout_exercises, allow_destroy: true
+
+  scope :latest, -> (query){order(created_at: :desc).limit(query)}
 end

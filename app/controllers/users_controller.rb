@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     end
     
     def show
+        @workouts = @user.workouts.latest(3)
     end
     
     def edit # require current user or admin check
