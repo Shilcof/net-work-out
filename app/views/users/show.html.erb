@@ -1,1 +1,15 @@
-<h1><%= @user.username %></h1>
+<div class="row pt-3" >
+    <aside class="col-md-3">
+        <div class="p-3 bg-light rounded navbar-nav ml-auto">
+            <%= content_tag :h3, @user.username %>
+            <%= content_tag :p, @user.name if @user.name %>
+            <%= link_to "Workouts", my_workouts_path(@user.username) %>
+            <%= link_to "Starred workouts", starred_workouts_path(@user.username) %>
+            <%= content_tag :p, @user.name if @user.name %>
+        </div>
+    </aside>
+
+    <div class="col-md-9">
+        render
+    </div>
+</div>
