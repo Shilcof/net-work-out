@@ -1,14 +1,23 @@
-<%= form_tag workouts_path, class: "card bg-light rounded mb-3", method: :get do %>
-    <div class="card-body">
-        <div class="form-row">
-            <div class="col-md-9">
-                <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search for a workout by title" %>
-            </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
+<div class="row" >
+    <aside class="col-md-3">
+        <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
+            <%= form_tag workouts_path, method: :get do %>
+                <div class="col-md-12 mb-3">
+                    <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search for a workout by title" %>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
+                </div>
+            <% end %>
+        </div>
+    </aside>
+
+    <div class="col-md-9">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h3 class="text-center">Recent workouts</h3>
             </div>
         </div>
+        <%= render(@workouts) || "No workouts found for this query" %>
     </div>
-<% end %>
-
-<%= render(@workouts) || "No workouts found for this query" %>
+</div>
