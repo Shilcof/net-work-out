@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_131002) do
+ActiveRecord::Schema.define(version: 2021_01_18_140907) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_01_17_131002) do
     t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "bio"
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username"
   end

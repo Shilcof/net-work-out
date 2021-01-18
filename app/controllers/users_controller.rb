@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     end
     
     def edit # require current user or admin check
-        redirect_if_not_permitted
     end
     
     def update # require current user or admin checks
@@ -47,7 +46,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin, :bio)
     end
 
     def set_user_by_username
