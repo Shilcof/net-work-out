@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :set_object, :redirect_if_not_permitted
+    before_action :redirect_if_username_required, :redirect_if_not_permitted, :set_object
 
     rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
     def redirect_to_root
         return redirect_to root_path
+    end
+
+    def redirect_if_username_required
+        return redirect_to complete_signup_path(current_user) if current_user && current_user.username.blank?
     end
 
     def redirect_if_logged_in # Login, Signup

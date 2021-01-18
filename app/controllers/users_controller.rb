@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     end
 
     def update_params
-        params.require(:user).permit(:admin, :bio)
+        params.require(:user).permit(:admin, :name, :bio)
     end
 
     def set_user_by_username
