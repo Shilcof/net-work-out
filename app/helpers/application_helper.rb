@@ -32,13 +32,18 @@ module ApplicationHelper
         if false #username_required
         elsif admin?
             render 'layouts/admin_nav'
-        elsif logged_in?
         else
+            render 'layouts/nav'
         end
-        # admin
-        # logged in
-        # logged out
-        # username required
+    end
+
+    def sidebar_options
+        if false #username_required
+        elsif logged_in?
+            render 'layouts/logged_in_side'
+        else
+            render 'layouts/logged_out_side'
+        end
     end
 
 end
