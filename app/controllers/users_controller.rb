@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     end
     
     def update # require current user or admin checks
-        @user.update(user_params)
+        @user.update(update_params)
         if @user.save
             redirect_to profile_path(@user.username)
         else
@@ -46,7 +46,11 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin, :bio)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
+    end
+
+    def update_params
+        params.require(:user).permit(:admin, :bio)
     end
 
     def set_user_by_username
