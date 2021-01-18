@@ -9,4 +9,5 @@ class Workout < ApplicationRecord
   accepts_nested_attributes_for :workout_exercises, allow_destroy: true
 
   scope :latest, -> (query){order(created_at: :desc).limit(query)}
+  scope :search, -> (query){where("LOWER(name) LIKE LOWER(?)", "%#{query}%")}
 end

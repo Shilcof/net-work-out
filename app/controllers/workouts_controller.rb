@@ -7,6 +7,7 @@ class WorkoutsController < ApplicationController
         else
             @workouts = Workout.all.includes(:muscles)
         end
+        @workouts = @workouts.search(params[:search]) if params[:search]
     end
     
     def new
