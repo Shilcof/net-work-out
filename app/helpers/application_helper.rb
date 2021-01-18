@@ -66,4 +66,16 @@ module ApplicationHelper
         end
     end
 
+    def form_class(object, attribute)
+        "form-control #{"is-invalid" unless object.errors[attribute].blank? }"
+    end
+
+    def invalid_feedback(object, attribute)
+        content_tag(:div, field_errors(object, attribute), class: "invalid-feedback d-block") unless object.errors[attribute].blank?
+    end
+
+    def field_errors(object, attribute)
+        object.errors[attribute].collect{|message| "#{attribute.to_s.capitalize} #{message}." }.join(" ")
+    end
+
 end

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     end
     
     def new
+        @user = User.new
     end
     
     def create
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
             login(@user)
             redirect_to profile_path(@user.username)
         else
-            redirect_to signup_path
+            render :new
         end
     end
     
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :admin)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
     end
 
     def set_user_by_username

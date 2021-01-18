@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    validates :username, :email, presence: true
+
     def self.from_omniauth(auth)
         byebug
         User.find_or_create_by(uid: auth[:uid], provider: auth[:provider]) do |u|
