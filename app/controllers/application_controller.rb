@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         return redirect_to root_path
     end
 
-    def redirect_if_logged_in # Login, Signupwhat 
+    def redirect_if_logged_in # Login, Signup
         redirect_to_root if logged_in?
     end
 
