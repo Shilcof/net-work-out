@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :workouts
+    has_many :stars
 
     has_secure_password
     

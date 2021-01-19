@@ -4,6 +4,8 @@ class Workout < ApplicationRecord
   has_many :exercises, through: :workout_exercises
   has_many :muscles, through: :exercises
 
+  has_many :stars, as: :starable
+
   validates :name, :information, presence: true, no_symbols: true
 
   accepts_nested_attributes_for :workout_exercises, allow_destroy: true

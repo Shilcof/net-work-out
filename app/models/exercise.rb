@@ -2,6 +2,8 @@ class Exercise < ApplicationRecord
     has_many :workout_exercises, :dependent => :destroy
     has_many :workouts, through: :workout_exercises
     belongs_to :muscle
+
+    has_many :stars, as: :starable
     
     validates :name, :information, no_symbols: true, presence: true
     validates :name, uniqueness: true
