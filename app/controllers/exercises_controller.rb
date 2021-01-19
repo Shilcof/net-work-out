@@ -33,6 +33,7 @@ class ExercisesController < ApplicationController
     end
     
     def show
+        @workouts = @exercise.workouts
     end
     
     def edit
