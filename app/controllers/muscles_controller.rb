@@ -36,6 +36,7 @@ class MusclesController < ApplicationController
     
     def destroy
         @muscle.destroy
+        redirect_to muscles_path
     end
 
     private

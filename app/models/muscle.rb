@@ -1,5 +1,5 @@
 class Muscle < ApplicationRecord
-    has_many :exercises
+    has_many :exercises, :dependent => :destroy
     has_many :workouts, through: :exercises
     
     validates :name, :information, no_symbols: true, presence: true
