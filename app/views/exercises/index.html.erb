@@ -10,14 +10,12 @@
                 </div>
             <% end %>
 
-            <%= form_tag new_exercise_link, method: :get do %>
                 <div class="col-md-12">
                     <%= label_tag "Don't see the exercise you are looking for?" %>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-outline-success btn-block">Add one here</button>
+                    <%= new_exercise_link %>
                 </div>
-            <% end %>
         </div>
     </aside>
 
