@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   root 'exercises#index'
 
-  resources :stars, only: [:create]
-  post '/stars/create', to: 'stars#create'
+  resources :stars, only: [:create, :destroy]
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

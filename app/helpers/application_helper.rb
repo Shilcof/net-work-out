@@ -83,8 +83,13 @@ module ApplicationHelper
     end
 
     def star_object(object)
-        button_to("Star #{object.class.to_s}", { action: :create, controller: :stars }, params: { class: object.class.to_s, id: object.id, uri: current_uri }, 
-            class: "btn btn-outline-warning btn-block" ) if admin? || permission_to_edit?(object)
+        if starred?(object)
+            button_to("Unstar #{object.class.to_s}", { action: :destroy, controller: :stars, id: current_user.stars.where(starable_id: object.id, starable_type: object.class.to_s).first.id }, method: :delete, params: { id: current_user.stars.where(starable_id: object.id, starable_type: object.class.to_s).first.id, uri: current_uri }, 
+                class: "btn btn-outline-warning btn-block" ) if logged_in?
+        else
+            button_to("Star #{object.class.to_s}", { action: :create, controller: :stars }, params: { class: object.class.to_s, id: object.id, uri: current_uri }, 
+                class: "btn btn-outline-warning btn-block" ) if logged_in?
+        end
     end
 
     def starred?(object)
