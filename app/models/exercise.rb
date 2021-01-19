@@ -9,8 +9,6 @@ class Exercise < ApplicationRecord
     validates :name, length: { in: 3..30 }
     validates :information, length: { in: 50..2000 }
 
-    accepts_nested_attributes_for :muscle, reject_if: proc { |attributes| attributes[:name].blank? || attributes[:information].blank? }
-
     def muscle_attributes=(muscle_attributes)
         if muscle_attributes[:name].present? && muscle_attributes[:information].present?
             @muscle = Muscle.find_by_name(muscle_attributes[:name])
