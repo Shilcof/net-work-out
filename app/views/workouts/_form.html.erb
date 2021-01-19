@@ -1,40 +1,62 @@
-<%= form_for @workout do |f| %>
-    <div>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+<div class="container px-5 pt-3">
+    <div class="card mb-3 bg-light">
+        <div class="card-body">
+            <h3 class="text-center">Workout information</h3>
+        </div>
     </div>
-    <div>
-        <%= f.label :information %>
-        <%= f.text_field :information %>
-    </div>
-    <div>
-        <%= f.label :workout_exercises %>
-        <%= f.fields_for :workout_exercises do |we_fields| %>
-            <div>
-                <%= we_fields.label :exercise_id %>
-                <%= we_fields.collection_select :exercise_id, @exercises, :id, :name, {include_blank: 'Select an exercise'} %>
-            </div>
-            <div>
-                <%= we_fields.label :sets %>
-                <%= we_fields.number_field :sets %>
-            </div>
-            <div>
-                <%= we_fields.label :reps %>
-                <%= we_fields.number_field :reps %>
-            </div>
-            <div>
-                <%= we_fields.label :_destroy, 'delete' %>
-                <%= we_fields.check_box :_destroy %>
-            </div>
-        <% end %>
-    </div>
-    <%= f.submit 'Add an exercise', :name => "add_exercise" %>
-    <%= f.submit 'Delete marked exercises', :name => "remove_exercise" %>
-    <%= f.submit %>
-<% end %>
+</div>
 
-
-
+<div class="container px-5 pt-3">
+    <%= form_for @workout do |f| %>
+        <div class="form-row" >
+            <div class="col-md-12 mb-3">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: form_class(@workout, :name) %>
+                <%= invalid_feedback(@workout, :name) %>
+            </div>
+            <div class="col-md-12 mb-3">
+                <%= f.label :information %>
+                <%= f.text_area :information, class: form_class(@workout, :information), rows: 10 %>
+                <%= invalid_feedback(@workout, :information) %>
+            </div>
+            <div class="col-md-12 card mb-3 bg-light">
+                <div class="card-body">
+                    <h3 class="text-center">Add exercises</h3>
+                </div>
+            </div>
+                <%= f.fields_for :workout_exercises do |we_fields| %>
+                <div class="col-md-12 mb-3 border rounded pt-3 form-row">
+                    <div class="col-md-12 mb-3">
+                        <%= we_fields.label :exercise_id %>
+                        <%= we_fields.collection_select :exercise_id, @exercises, :id, :name, {include_blank: 'Select an exercise'}, {class: form_class(@workout, :workout_exercises)} %>
+                        <%= invalid_feedback(@workout, :workout_exercises) %>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <%= we_fields.label :sets %>
+                        <%= we_fields.number_field :sets, class: form_class(@workout, :workout_exercises) %>
+                        <%= invalid_feedback(@workout, :workout_exercises) %>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <%= we_fields.label :reps %>
+                        <%= we_fields.number_field :reps, class: form_class(@workout, :workout_exercises) %>
+                        <%= invalid_feedback(@workout, :workout_exercises) %>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <%= we_fields.check_box :_destroy %>
+                        <%= we_fields.label :_destroy, 'delete' %>
+                    </div>
+                    </div>
+                <% end %>
+            <div class="col-md-6 mb-3">
+                <%= f.submit 'Add an exercise', :name => "add_exercise", class: "btn btn-outline-primary btn-block" %>
+            </div>
+            <div class="col-md-6 mb-3">
+                <%= f.submit 'Delete marked exercises', :name => "remove_exercise", class: "btn btn-outline-primary btn-block" %>
+            </div>
+        </div>
+        <%= f.submit class: "btn btn-outline-primary btn-block" %>
+    <% end %>
+</div>
 
 
 
