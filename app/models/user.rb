@@ -2,10 +2,14 @@ class User < ApplicationRecord
     has_many :workouts
 
     has_secure_password
-    validates :username, no_symbols: true
-    validates :username, presence: true, on: :create, unless: :oauth
-    validates :username, presence: true, on: :update
-    validates :email, presence: true, email: true
+    
+    validates :username, :bio, :name, no_symbols: true
+    validates :username, presence: true, uniqueness: true, on: :create, unless: :oauth
+    validates :username, presence: true, uniqueness: true, on: :update
+
+    validates :email, presence: true, email: true, uniqueness: true
+
+    validates :bio, length: { in: 6..500 }
 
     def oauth
         !!uid
