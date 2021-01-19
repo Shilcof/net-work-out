@@ -7,6 +7,7 @@ class ExercisesController < ApplicationController
         else
             @exercises = Exercise.all
         end
+        @exercises = @exercises.search(params[:search]) if params[:search]
     end
     
     def new

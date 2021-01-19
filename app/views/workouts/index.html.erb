@@ -1,7 +1,7 @@
 <div class="row" >
     <aside class="col-md-3">
         <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
-            <%= form_tag workouts_path, method: :get do %>
+            <%= form_tag current_uri, method: :get do %>
                 <div class="col-md-12 mb-3">
                     <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search for a workout by title" %>
                 </div>

@@ -4,4 +4,6 @@ class Exercise < ApplicationRecord
     belongs_to :muscle
 
     accepts_nested_attributes_for :muscle, reject_if: proc { |attributes| attributes[:name].blank? || attributes[:information].blank? }
+
+    scope :search, -> (query){where("LOWER(name) LIKE LOWER(?)", "%#{query}%")}
 end
