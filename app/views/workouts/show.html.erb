@@ -4,8 +4,8 @@
             <div class="py-3">
                 <%= content_tag :h3, @workout.name %>
                 <%= content_tag :p, @workout.html %>
-                <%= button_to "Edit workout", edit_workout_path(@workout) ,method: :get, class: "btn btn-outline-primary" if admin? || permission_to_edit?(get_object)%><br>
-                <%= button_to "Delete workout", workout_path(@workout) ,method: :delete, class: "btn btn-outline-danger" if admin? || permission_to_edit?(get_object) %>
+                <%= button_to "Edit workout", edit_workout_path(@workout) ,method: :get, class: "btn btn-outline-primary btn-block bg-white" if admin? || permission_to_edit?(get_object)%><br>
+                <%= button_to "Delete workout", workout_path(@workout) ,method: :delete, class: "btn btn-outline-danger btn-block bg-white" if admin? || permission_to_edit?(get_object) %>
             </div>
         </div>
     </aside>

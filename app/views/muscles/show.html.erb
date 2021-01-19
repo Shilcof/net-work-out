@@ -5,8 +5,8 @@
                 <%= content_tag :h3, @muscle.name %>
                 <p><%= link_to "Exercises", muscle_exercises_path(@muscle) %></p>
                 <%= content_tag :p, @muscle.html %>
-                <%= button_to "Edit muscle", edit_muscle_path(@muscle) ,method: :get, class: "btn btn-outline-primary" if admin? %><br>
-                <%= button_to "Delete muscle", muscle_path(@muscle) ,method: :delete, class: "btn btn-outline-danger" if admin? %>
+                <%= button_to "Edit muscle", edit_muscle_path(@muscle) ,method: :get, class: "btn btn-outline-primary btn-block bg-white" if admin? %><br>
+                <%= button_to "Delete muscle", muscle_path(@muscle) ,method: :delete, class: "btn btn-outline-danger btn-block bg-white" if admin? %>
             </div>
         </div>
     </aside>
