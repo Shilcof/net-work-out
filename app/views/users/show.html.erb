@@ -19,6 +19,6 @@
                 <h3 class="text-center">Recent workouts for <%= @user.username %></h3>
             </div>
         </div>
-        <%= render @workouts %>
+        <%= render(@workouts) || render(partial: 'layouts/no_workouts_to_show') %>
     </div>
 </div>
