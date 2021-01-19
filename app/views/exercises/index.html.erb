@@ -25,6 +25,12 @@
                 <h3 class="text-center"><%= exercise_show_title %></h3>
             </div>
         </div>
-        <%= render(@exercises) || "No exercises found for this query" %>
+        
+        <div class="album pt-3 bg-white">
+            <div class="card-deck">
+                <%= render(@exercises) || "No exercises found for this query" %>
+            </div>
+        </div>
     </div>
 </div>
+
