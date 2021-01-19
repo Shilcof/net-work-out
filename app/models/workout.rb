@@ -11,4 +11,5 @@ class Workout < ApplicationRecord
   scope :latest, -> (query){order(created_at: :desc).limit(query)}
   scope :search, -> (query){where("LOWER(name) LIKE LOWER(?)", "%#{query}%")}
   scope :muscles_search, -> (query){joins(:exercises).where('exercises.muscle_id': query)}
+  scope :exercises_search, -> (query){joins(:workout_exercises).where('workout_exercises.exercise_id': query)}
 end

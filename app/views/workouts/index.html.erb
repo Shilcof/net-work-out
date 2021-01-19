@@ -3,12 +3,24 @@
         <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
             <%= form_tag current_uri, method: :get do %>
                 <div class="col-md-12 mb-3">
-                    <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search for a workout by title" %>
+                    <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search by title" %>
                 </div>
-                <div class="col-md-12">
+
+                <div class="col-md-12 mb-3">
+                    <%= collection_select nil, :muscle_id, @muscles, :id, :name, {include_blank: "Search by muscle"}, {class: "form-control"} %>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <%= collection_select nil, :exercise_id, @exercises, :id, :name, {include_blank: "Search by exercise"}, {class: "form-control"} %>
+                </div>
+
+                <div class="col-md-12 mb-3">
                     <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
                 </div>
             <% end %>
+            <div class="col-md-12">
+                <%= button_to "New workout", new_workout_path, method: :get, class: "btn btn-outline-success btn-block" %>
+            </div>
         </div>
     </aside>
 
