@@ -87,4 +87,8 @@ module ApplicationHelper
             class: "btn btn-outline-warning btn-block" ) if admin? || permission_to_edit?(object)
     end
 
+    def starred?(object)
+        logged_in? ? current_user.stars.where(starable_id: object.id, starable_type: object.class.to_s).exists? : false
+    end
+
 end
