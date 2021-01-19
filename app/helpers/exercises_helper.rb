@@ -14,7 +14,8 @@ module ExercisesHelper
     end
 
     def exercise_form_muscle_field(f)
-        if @muscle 
+        if @muscle || @exercise.muscle
+            @muscle ||= @exercise.muscle
             f.hidden_field :muscle_id, value: @muscle.id
         else
             render partial: 'muscle_fields', locals: {f: f}

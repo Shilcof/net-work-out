@@ -15,6 +15,7 @@ class ExercisesController < ApplicationController
             @muscle = Muscle.find(params[:muscle_id])
             @exercise = @muscle.exercises.build
         else
+            @muscles = Muscle.all
             @exercise = Exercise.new
             @exercise.build_muscle
         end

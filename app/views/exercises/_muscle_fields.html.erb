@@ -1,14 +1,30 @@
-<div>
-    <%= f.collection_select :muscle_id, Muscle.all, :id, :name %>
+<div class="col-md-12 card mb-3 bg-light">
+    <div class="card-body">
+        <h3 class="text-center">Select an existing muscle</h3>
+    </div>
+</div>
+
+<div class="col-md-12 mb-3">
+    <%= f.label :muscle_id %>
+    <%= f.collection_select :muscle_id, @muscles, :id, :name, {include_blank: "choose a muscle by name"}, {class: form_class(@exercise, :muscle)} %>
+    <%= invalid_feedback(@exercise, :muscle) %>
+</div>
+
+<div class="col-md-12 card mb-3 bg-light">
+    <div class="card-body">
+        <h3 class="text-center">Or create a new one</h3>
+    </div>
 </div>
 
 <%= f.fields_for :muscle do |muscle_fields| %>
-    <div>
+    <div class="col-md-12 mb-3">
         <%= muscle_fields.label :name %>
-        <%= muscle_fields.text_field :name %>
+        <%= muscle_fields.text_field :name, class: form_class(@exercise, :muscle) %>
+        <%= invalid_feedback(@exercise, :muscle) %>
     </div>
-    <div>
+    <div class="col-md-12 mb-3">
         <%= muscle_fields.label :information %>
-        <%= muscle_fields.text_field :information %>
+        <%= muscle_fields.text_area :information, class: form_class(@exercise, :muscle), rows: 10 %>
+        <%= invalid_feedback(@exercise, :muscle) %>
     </div>
 <% end %>
