@@ -2,6 +2,7 @@ class MusclesController < ApplicationController
 
     def index
         @muscles = Muscle.all
+        @muscles = @muscles.search(params[:search]) if params[:search]
     end
     
     def new

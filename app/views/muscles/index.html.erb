@@ -1,5 +1,36 @@
-<h1>All Muscles</h1>
+<div class="row" >
+    <aside class="col-md-3">
+        <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
+            <%= form_tag current_uri, method: :get do %>
+                <div class="col-md-12 mb-3">
+                    <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search for an muscle by name" %>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
+                </div>
+            <% end %>
 
-<%= render(@muscles) || "No Muscles to display" %>
+                <div class="col-md-12">
+                    <%= label_tag "Don't see the muscle you are looking for?" %>
+                </div>
+                <div class="col-md-12">
+                    <%= button_to "New Muscle", new_muscle_path, method: :get, class: "btn btn-outline-success btn-block" %>
+                </div>
+        </div>
+    </aside>
 
-<%= button_to "Add a new muscle", new_muscle_path, method: :get %>
+    <div class="col-md-9">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h3 class="text-center">All muscles<%= " featuring '#{params[:search]}'" unless params[:search].blank? %></h3>
+            </div>
+        </div>
+        
+        <div class="album pt-3 bg-white">
+            <div class="card-deck">
+                <%= render(@muscles) || query_not_found_for("muscles") %>
+            </div>
+        </div>
+    </div>
+</div>
+
