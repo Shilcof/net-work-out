@@ -1,9 +1,9 @@
 module Formattable
     def html
         if try(:information)
-            information.gsub("\r\n\r\n","<br><br>")
+            information.gsub(/\n/,'<br/>').html_safe
         else
-            bio.gsub("\r\n\r\n","<br><br>")
+            bio.gsub(/\n/,'<br/>').html_safe
         end
     end
 end

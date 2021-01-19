@@ -26,20 +26,22 @@
             </div>
                 <%= f.fields_for :workout_exercises do |we_fields| %>
                 <div class="col-md-12 mb-3 border rounded pt-3 form-row">
+                    <% we_fields.object.valid? if @workout.errors.present? %>
+                    <% we = we_fields.object %>
                     <div class="col-md-12 mb-3">
                         <%= we_fields.label :exercise_id %>
-                        <%= we_fields.collection_select :exercise_id, @exercises, :id, :name, {include_blank: 'Select an exercise'}, {class: form_class(@workout, :workout_exercises)} %>
-                        <%= invalid_feedback(@workout, :workout_exercises) %>
+                        <%= we_fields.collection_select :exercise_id, @exercises, :id, :name, {include_blank: 'Select an exercise'}, {class: form_class(we, :exercise_id)} %>
+                        <%= invalid_feedback(we, :exercise_id) %>
                     </div>
                     <div class="col-md-6 mb-3">
                         <%= we_fields.label :sets %>
-                        <%= we_fields.number_field :sets, class: form_class(@workout, :workout_exercises) %>
-                        <%= invalid_feedback(@workout, :workout_exercises) %>
+                        <%= we_fields.number_field :sets, class: form_class(we, :sets) %>
+                        <%= invalid_feedback(we, :sets) %>
                     </div>
                     <div class="col-md-6 mb-3">
                         <%= we_fields.label :reps %>
-                        <%= we_fields.number_field :reps, class: form_class(@workout, :workout_exercises) %>
-                        <%= invalid_feedback(@workout, :workout_exercises) %>
+                        <%= we_fields.number_field :reps, class: form_class(we, :reps) %>
+                        <%= invalid_feedback(we, :reps) %>
                     </div>
                     <div class="col-md-12 mb-3">
                         <%= we_fields.check_box :_destroy %>
