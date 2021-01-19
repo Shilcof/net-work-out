@@ -1,5 +1,15 @@
-<div class="card mb-4 bg-light shadow-sm" style="min-width: 18rem;">
-    <h4><%= workout_exercise.exercise.name %></h4>
-    <h4><%= workout_exercise.sets %></h4>
-    <h4><%= workout_exercise.reps %></h4>
+<div class="card mb-3 bg-light shadow-sm" style="min-width: 18rem;">
+    <div class="card-body bg-light">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center pt-2"><%= link_to workout_exercise.exercise.name, workout_exercise.exercise %></div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center pt-2">Sets: <%= workout_exercise.sets %></div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center pt-2">Reps: <%= workout_exercise.reps %></div>
+            </div>
+        </div>
+    </div>
 </div>
