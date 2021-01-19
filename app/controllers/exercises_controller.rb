@@ -26,6 +26,8 @@ class ExercisesController < ApplicationController
         if @exercise.save
             redirect_to @exercise
         else
+            @muscles = Muscle.all
+            @exercise.build_muscle unless @exercise.muscle
             render :new
         end
     end
