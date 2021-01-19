@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'stars/create'
   root 'exercises#index'
 
   get 'login', to: 'sessions#new'
