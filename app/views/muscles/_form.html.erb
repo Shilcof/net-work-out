@@ -1,11 +1,25 @@
-<%= form_for @muscle do |f| %>
-    <div>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+<div class="container px-5 pt-3">
+    <div class="card mb-3 bg-light">
+        <div class="card-body">
+            <h3 class="text-center">Muscle information</h3>
+        </div>
     </div>
-    <div>
-        <%= f.label :information %>
-        <%= f.text_field :information %>
-    </div>
-    <%= f.submit %>
-<% end %>
+</div>
+
+<div class="container px-5 pt-3">
+    <%= form_for @muscle do |f| %>
+        <div class="form-row" >
+            <div class="col-md-12 mb-3">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: form_class(@muscle, :name) %>
+                <%= invalid_feedback(@muscle, :name) %>
+            </div>
+            <div class="col-md-12 mb-3">
+                <%= f.label :information %>
+                <%= f.text_area :information, class: form_class(@muscle, :information), rows: 10 %>
+                <%= invalid_feedback(@muscle, :information) %>
+            </div>
+        </div>
+        <%= f.submit class: "btn btn-outline-primary btn-block" %>
+    <% end %>
+</div>
