@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'stars/create'
   root 'exercises#index'
+
+  resources :stars, only: [:create]
+  post '/stars/create', to: 'stars#create'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

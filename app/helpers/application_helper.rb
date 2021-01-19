@@ -82,4 +82,9 @@ module ApplicationHelper
         render partial: 'layouts/query_not_found', locals: {class_name: class_name}
     end
 
+    def star_object(object)
+        button_to("Star #{object.class.to_s}", { action: :create, controller: :stars }, params: { class: object.class.to_s, id: object.id, uri: current_uri }, 
+            class: "btn btn-outline-warning btn-block" ) if admin? || permission_to_edit?(object)
+    end
+
 end

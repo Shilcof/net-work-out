@@ -1,7 +1,8 @@
 <div class="row" >
-    <aside class="col-md-3">
+    <aside class="col-md-3 mb-3">
         <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
             <div class="py-3">
+                <%= star_object(@workout) %><br>
                 <%= content_tag :h3, @workout.name %>
                 <%= content_tag :p, @workout.html %>
                 <%= button_to "Edit workout", edit_workout_path(@workout) ,method: :get, class: "btn btn-outline-primary btn-block" if admin? || permission_to_edit?(get_object)%><br>
