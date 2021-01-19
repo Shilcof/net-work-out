@@ -29,6 +29,7 @@ class WorkoutsController < ApplicationController
     end
     
     def show
+        @workout_exercises = @workout.workout_exercises.includes(:exercise)
     end
     
     def edit
