@@ -1,2 +1,21 @@
-<h1><%= @muscle.name %></h1>
-<h3><%= @muscle.information %></h3>
+<div class="row" >
+    <aside class="col-md-3">
+        <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
+            <div class="py-3">
+                <%= content_tag :h3, @muscle.name %>
+                <p><%= link_to "Exercises", muscle_exercises_path(@muscle) %></p>
+                <%= content_tag :p, @muscle.information %>
+                <%= button_to "Edit Muscle", edit_muscle_path(@muscle) ,method: :get, class: "btn btn-outline-primary" if admin? %>
+            </div>
+        </div>
+    </aside>
+
+    <div class="col-md-9">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h3 class="text-center">Workouts featuring <%= @muscle.name %></h3>
+            </div>
+        </div>
+        <%= render @workouts %>
+    </div>
+</div>

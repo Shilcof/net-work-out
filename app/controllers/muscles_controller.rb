@@ -19,6 +19,7 @@ class MusclesController < ApplicationController
     end
     
     def show
+        @workouts = @muscle.workouts
     end
     
     def edit
