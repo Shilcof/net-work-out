@@ -1,12 +1,17 @@
-<%= form_for([@muscle,@exercise]) do |f| %>
-    <div>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </div>
-    <div>
-        <%= f.label :information %>
-        <%= f.text_field :information %>
-    </div>
-    <%= exercise_form_muscle_field(f) %>
-    <%= f.submit %>
-<% end %>
+<div class="container px-5 pt-3">
+    <%= form_for([@muscle,@exercise]) do |f| %>
+        <div class="form-row" >
+            <div class="col-md-12 mb-3">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: form_class(@exercise, :name) %>
+                <%= invalid_feedback(@exercise, :name) %>
+            </div>
+            <div class="col-md-12 mb-3">
+                <%= f.label :information %>
+                <%= f.text_area :information, class: form_class(@exercise, :information), rows: 10 %>
+                <%= invalid_feedback(@exercise, :information) %>
+            </div>
+        </div>
+        <%= f.submit class: "btn btn-outline-primary btn-block" %>
+    <% end %>
+</div>

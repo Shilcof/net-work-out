@@ -2,6 +2,7 @@ module ExercisesHelper
     def exercise_show_title
         title = @muscle ? "Exercises for #{@muscle.name}" : "All exercises"
         title += " featuring '#{params[:search]}'" unless params[:search].blank?
+        title
     end
 
     def new_exercise_link
