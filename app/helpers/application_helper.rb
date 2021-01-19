@@ -78,4 +78,8 @@ module ApplicationHelper
         object.errors[attribute].collect{|message| "#{attribute.to_s.capitalize} #{message}." }.join(" ")
     end
 
+    def query_not_found_for(class_name)
+        render partial: 'layouts/query_not_found', locals: {class_name: class_name}
+    end
+
 end
