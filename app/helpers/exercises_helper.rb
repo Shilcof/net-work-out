@@ -14,7 +14,7 @@ module ExercisesHelper
     end
 
     def exercise_form_muscle_field(f)
-        if @muscle || @exercise.muscle
+        if @muscle || @exercise.muscle.id
             @muscle ||= @exercise.muscle
             f.hidden_field :muscle_id, value: @muscle.id
         else
