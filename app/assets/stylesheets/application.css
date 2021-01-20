@@ -31,3 +31,6 @@ body {
 .giant {
     font-size: 200px;
 }
+[type='radio'] {
+    display: none; 
+}

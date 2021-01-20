@@ -14,19 +14,22 @@
                     <%= collection_select nil, :exercise_id, @exercises, :id, :name, {include_blank: "Search by exercise"}, {class: "form-control"} %>
                 </div>
 
-
-                <div data-toggle="buttons">
-                    <div class="col-md-6 mb-3">
-                        <label class="btn btn-outline-primary btn-block">
-                            <input type="radio" name="sort" id="new"> New
+                <div data-toggle="buttons" class="col-md-12 mb-2 row btn-group">
+                    <div class="col-md-6 pl-0 pr-2 mb-0">
+                        <label class="btn btn-outline-secondary btn-block">
+                            <input type="radio" name="sort" id="new" value="new"> New
                         </label>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="btn btn-outline-primary btn-block">
-                            <input type="radio" name="sort" id="stars"> Most stars
+                    <div class="col-md-6 pr-0 pl-2 mb-0">
+                        <label class="btn btn-outline-secondary btn-block">
+                            <input type="radio" name="sort" id="stars"  value="stars"> Stars
                         </label>
                     </div>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <%= number_field :amount, nil, {placeholder: "Choose how many to display", class: "form-control"} %>
                 </div>
 
                 <div class="col-md-12 mb-3">

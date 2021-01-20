@@ -13,10 +13,20 @@ class WorkoutsController < ApplicationController
         end
         @muscles = Muscle.all
         @exercises = Exercise.all
-        @workouts = @workouts.search(params[:search]) if params[:search].present?
-        @workouts = @workouts.muscles_search(params[:muscle_id]) if params[:muscle_id].present?
-        @workouts = @workouts.exercises_search(params[:exercise_id]) if params[:exercise_id].present?
-        @workouts = @workouts.reverse
+        
+        amount = params[:amount].first
+        
+        amount = 10 if amount.blank? || !amount.try(:to_i) || amount.to_i < 1
+
+        if params[:sort] == "stars"
+            @workouts = @workouts.most_starred(amount).search(params[:search]).muscles_search(params[:muscle_id]).exercises_search(params[:exercise_id])
+        else
+            @workouts = @workouts.latest(amount).search(params[:search]).muscles_search(params[:muscle_id]).exercises_search(params[:exercise_id])
+        end
+        # @workouts = @workouts.search(params[:search]) if params[:search].present?
+        # @workouts = @workouts.muscles_search(params[:muscle_id]) if params[:muscle_id].present?
+        # @workouts = @workouts.exercises_search(params[:exercise_id]) if params[:exercise_id].present?
+        # @workouts = @workouts.reverse
     end
     
     def new

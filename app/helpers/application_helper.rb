@@ -106,7 +106,7 @@ module ApplicationHelper
 
     def starred?(object)
         if logged_in?
-            object.starred_users.where(id: current_user.id).exists?
+            object.starred_users.include?(current_user)
         else
             false
         end
