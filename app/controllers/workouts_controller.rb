@@ -3,7 +3,11 @@ class WorkoutsController < ApplicationController
     def index
         if params[:username]
             @user = User.find_by_username!(params[:username])
-            @workouts = @user.workouts.includes(:muscles, :user, :starred_users)
+            if current_uri =~ /starred_workouts\z/
+                @workouts = @user.starred_workouts.includes(:muscles, :user, :starred_users)
+            else
+                @workouts = @user.workouts.includes(:muscles, :user, :starred_users)
+            end
         else
             @workouts = Workout.all.includes(:muscles, :user, :starred_users)
         end
