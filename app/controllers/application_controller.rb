@@ -68,4 +68,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def check_valid(object)
+        if object.errors.messages.empty?
+            flash[:alert] = nil
+        else
+            flash[:alert] = "#{object.class.to_s} invalid, please review errors"
+        end
+    end
+
 end

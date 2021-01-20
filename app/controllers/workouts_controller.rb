@@ -33,6 +33,7 @@ class WorkoutsController < ApplicationController
         elsif @workout.save
             return redirect_to @workout
         end
+        check_valid(@workout)
         @exercises = Exercise.all
         render :new
     end
