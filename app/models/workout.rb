@@ -5,6 +5,7 @@ class Workout < ApplicationRecord
   has_many :muscles, through: :exercises
 
   has_many :stars, as: :starable
+  has_many :starred_users, through: :stars, source: :user
 
   validates :name, :information, presence: true, no_symbols: true
 

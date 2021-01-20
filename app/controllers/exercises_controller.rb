@@ -3,9 +3,9 @@ class ExercisesController < ApplicationController
     def index
         if params[:muscle_id]
             @muscle = Muscle.find(params[:muscle_id])
-            @exercises = @muscle.exercises
+            @exercises = @muscle.exercises.includes(:starred_users)
         else
-            @exercises = Exercise.all
+            @exercises = Exercise.all.includes(:starred_users)
         end
         @exercises = @exercises.search(params[:search]) if params[:search]
     end
@@ -33,7 +33,7 @@ class ExercisesController < ApplicationController
     end
     
     def show
-        @workouts = @exercise.workouts.includes(:muscles, :user)
+        @workouts = @exercise.workouts.includes(:muscles, :user, :starred_users)
     end
     
     def edit

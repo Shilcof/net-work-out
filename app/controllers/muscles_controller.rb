@@ -1,7 +1,7 @@
 class MusclesController < ApplicationController
 
     def index
-        @muscles = Muscle.all
+        @muscles = Muscle.all.includes(:starred_users)
         @muscles = @muscles.search(params[:search]) if params[:search]
     end
     
@@ -19,7 +19,7 @@ class MusclesController < ApplicationController
     end
     
     def show
-        @workouts = @muscle.workouts.includes(:muscles, :user)
+        @workouts = @muscle.workouts.includes(:muscles, :user, :starred_users)
     end
     
     def edit

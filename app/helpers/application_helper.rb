@@ -1,7 +1,7 @@
 module ApplicationHelper
 
     def current_user
-        @current_user ||= User.includes(:starred_workouts, :starred_exercises, :starred_muscles).find_by(id: session[:user_id]) if session[:user_id]
+        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
     def logged_in?
@@ -96,9 +96,17 @@ module ApplicationHelper
     #     logged_in? ? current_user.stars.where(starable_id: object.id, starable_type: object.class.to_s).exists? : false
     # end
 
+    # def starred?(object)
+    #     if logged_in?
+    #         current_user.send("starred_#{object.class.to_s.downcase.pluralize}").include?(object)
+    #     else
+    #         false
+    #     end
+    # end
+
     def starred?(object)
         if logged_in?
-            current_user.send("starred_#{object.class.to_s.downcase.pluralize}").include?(object)
+            object.starred_users.include?(current_user)
         else
             false
         end

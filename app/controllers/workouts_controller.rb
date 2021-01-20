@@ -3,15 +3,16 @@ class WorkoutsController < ApplicationController
     def index
         if params[:username]
             @user = User.find_by_username!(params[:username])
-            @workouts = @user.workouts.includes(:muscles, :user)
+            @workouts = @user.workouts.includes(:muscles, :user, :starred_users)
         else
-            @workouts = Workout.all.includes(:muscles, :user)
+            @workouts = Workout.all.includes(:muscles, :user, :starred_users)
         end
         @muscles = Muscle.all
         @exercises = Exercise.all
         @workouts = @workouts.search(params[:search]) if params[:search].present?
         @workouts = @workouts.muscles_search(params[:muscle_id]) if params[:muscle_id].present?
         @workouts = @workouts.exercises_search(params[:exercise_id]) if params[:exercise_id].present?
+        @workouts = @workouts.reverse
     end
     
     def new

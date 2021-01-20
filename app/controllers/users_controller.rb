@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
     
     def show
-        @workouts = @user.workouts.includes(:muscles, :user).latest(3)
+        @workouts = @user.workouts.includes(:muscles, :user, :starred_users).latest(3)
     end
     
     def edit # require current user or admin check
