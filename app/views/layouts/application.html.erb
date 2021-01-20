@@ -11,29 +11,35 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
+  
+    <div>
+      <div class="container-fluid pb-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <%= link_to "NetWorkOut Home", root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
 
-    <div class='container-fluid pb-5'>
+              <%= navbar_options %>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <%= link_to "NetWorkOut Home", root_path, class: "navbar-brand" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ml-auto">
-
-            <%= navbar_options %>
-
+            </div>
           </div>
+        </nav>
+        
+        <div class="pt-3 flex-fill">
+          <%= yield %>
         </div>
-      </nav>
-      
-      <div class="pt-3">
-        <%= yield %>
       </div>
-
     </div>
+
+    <footer class="footer mt-auto">
+      <div class="container text-center">
+        <span class="text-muted">NetWorkOut established 2021</span>
+      </div>
+    </footer>
 
   </body>
 
