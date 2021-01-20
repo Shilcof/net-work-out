@@ -1,8 +1,6 @@
 <div class="container px-5 pt-3">
 
-    <% if flash[:alert].present? %>
-        <%= content_tag :div, flash[:alert], class: "alert alert-danger text-center", role: "alert" %>
-    <% end %>
+    <%= alerts %>
 
     <%= form_for :user do |f| %>
         <div class="form-row" >

@@ -112,4 +112,10 @@ module ApplicationHelper
         end
     end
 
+    def alerts
+        if flash[:alert].present?
+            content_tag(:div, flash[:alert], class: "alert alert-danger text-center", role: "alert")
+        end
+    end
+
 end
