@@ -5,8 +5,8 @@
                 <%= star_object(@workout) %><br>
                 <%= content_tag :h3, @workout.name %>
                 <%= content_tag :p, @workout.html %>
-                <%= button_to "Edit workout", edit_workout_path(@workout) ,method: :get, class: "btn btn-outline-primary btn-block" if admin? || permission_to_edit?(get_object)%><br>
-                <%= button_to "Delete workout", workout_path(@workout) ,method: :delete, class: "btn btn-outline-danger btn-block" if admin? || permission_to_edit?(get_object) %>
+                <%= button_to "Edit workout", edit_workout_path(@workout) ,method: :get, class: "btn btn-outline-primary btn-block" if admin? || (logged_in? && permission_to_edit?(@workout)) %><br>
+                <%= button_to "Delete workout", workout_path(@workout) ,method: :delete, class: "btn btn-outline-danger btn-block" if admin? || (logged_in? && permission_to_edit?(@workout)) %>
             </div>
         </div>
     </aside>
