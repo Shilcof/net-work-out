@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     before_action :redirect_if_username_required, :redirect_if_not_permitted, :set_object
 
+    rescue_from ActionController::RoutingError, with: :page_not_found
+
     rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
     include ApplicationHelper
