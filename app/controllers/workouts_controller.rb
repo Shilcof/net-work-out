@@ -78,6 +78,7 @@ class WorkoutsController < ApplicationController
         elsif @workout.update(workout_params)
             return redirect_to @workout
         end
+        check_valid(@workout)
         @exercises = Exercise.all
         render :edit
     end

@@ -14,6 +14,7 @@ class MusclesController < ApplicationController
         if @muscle.save
             redirect_to @muscle
         else
+            check_valid(@muscle)
             render :new
         end
     end
@@ -30,6 +31,7 @@ class MusclesController < ApplicationController
         if @muscle.save
             redirect_to @muscle
         else
+            check_valid(@muscle)
             render :edit
         end
     end

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
             login(@user)
             redirect_to profile_path(@user.username)
         else
+            check_valid(@user)
             render :new
         end
     end
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to profile_path(@user.username)
         else
+            check_valid(@user)
             render :edit
         end
     end
