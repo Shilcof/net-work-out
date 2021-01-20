@@ -1,4 +1,4 @@
-<div class="card mb-4 bg-light shadow-sm" style="min-width: 18rem;">
+<div class="card mb-4 bg-light shadow-sm <%= "border-warning" if starred?(workout) %>" style="min-width: 18rem;">
     <a class="text-dark card-link" href="<%= muscle_path(muscle) %>">
     <div class="card-body text-center">
         <h4 class="card-heading"><%= muscle.name %></h4>

@@ -1,6 +1,9 @@
 class User < ApplicationRecord
     has_many :workouts
     has_many :stars
+    has_many :starred_workouts, through: :stars, source: 'starable', source_type: 'Workout'
+    has_many :starred_exercises, through: :stars, source: 'starable', source_type: 'Exercise'
+    has_many :starred_muscles, through: :stars, source: 'starable', source_type: 'Muscle'
 
     has_secure_password
     
