@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   before_action :redirect_if_logged_in, only: [:new, :create]
   skip_before_action :redirect_if_not_permitted, only: [:new, :create]
-  skip_before_action :redirect_if_username_required, only: [:edit, :update]
+  skip_before_action :redirect_if_username_required, only: [:edit, :update, :destroy]
   skip_before_action :set_object
 
   def new
@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
 
   def omniauth
     @user = User.from_omniauth(auth)
+    byebug
     if @user.valid?
       login(@user)
       redirect_to profile_path(@user.username)

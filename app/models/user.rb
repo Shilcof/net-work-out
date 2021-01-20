@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
     validates :email, presence: true, email: true, uniqueness: true
 
-    validates :bio, length: { in: 6..500 }
+    validates :bio, length: { maximum: 500 }, on: :update
 
     def oauth
         !!uid
