@@ -1,7 +1,8 @@
 <div class="row" >
     <aside class="col-md-3 mb-3">
-        <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
+        <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border <%= "border-warning" if starred?(@exercise) %>">
             <div class="py-3">
+                <%= star_object(@exercise) %><br>
                 <%= content_tag :h3, @exercise.name %>
                 <p> Muscle trained: <%= link_to @exercise.muscle.name, @exercise.muscle %></p>
                 <%= content_tag :p, @exercise.html %>
