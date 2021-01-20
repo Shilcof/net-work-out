@@ -1,9 +1,7 @@
 class User < ApplicationRecord
     has_many :workouts
+    has_many :muscles, through: :workouts
     has_many :stars
-    has_many :starred_workouts, through: :stars, source: 'starable', source_type: 'Workout'
-    has_many :starred_exercises, through: :stars, source: 'starable', source_type: 'Exercise'
-    has_many :starred_muscles, through: :stars, source: 'starable', source_type: 'Muscle'
 
     has_secure_password
     
@@ -29,5 +27,9 @@ class User < ApplicationRecord
             u.name = auth[:info][:name]
             u.password = SecureRandom.hex(32)
         end
+    end
+
+    def favourite_muscle
+        muscles.group(:'muscles.id').order("count(muscles.id) DESC").limit(1)
     end
 end
