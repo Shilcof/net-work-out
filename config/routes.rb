@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'exercises#index'
+  root 'home#index'
 
   resources :stars, only: [:create, :destroy]
 

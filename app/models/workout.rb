@@ -13,7 +13,8 @@ class Workout < ApplicationRecord
 
   scope :featured, -> {joins(:stars).group(:'starable_id').order("count(starable_id) DESC").limit(1)}
   
-  scope :featured_amount, -> (query){joins(:stars).group(:'starable_id').order("count(starable_id) DESC").limit(query)}
+  # scope :most_starred_by_time, -> (query){joins(:stars).group(:'starable_id').having().order("count(starable_id) DESC").limit(query)}
+  scope :most_starred, -> (query){joins(:stars).group(:'starable_id').order("count(starable_id) DESC").limit(query)}
   scope :latest, -> (query){order(created_at: :desc).limit(query)}
   scope :search, -> (query){where("LOWER(name) LIKE LOWER(?)", "%#{query}%")}
   scope :muscles_search, -> (query){joins(:exercises).where('exercises.muscle_id': query)}
