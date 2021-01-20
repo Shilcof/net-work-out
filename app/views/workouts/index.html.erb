@@ -27,7 +27,7 @@
     <div class="col-md-9">
         <div class="card mb-3 bg-light">
             <div class="card-body">
-                <h3 class="text-center">Recent workouts</h3>
+                <h3 class="text-center">Recent workouts <%= "for #{@user.username}" if @user %></h3>
             </div>
         </div>
         <%= render(@workouts) || query_not_found_for("workouts") %>

@@ -2,11 +2,11 @@
     <a href="<%= workout_path(workout) %>">
         <div class="card-header text-dark <%= "border-warning" if starred?(workout) %>">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <%= workout.name %>
                 </div>
-                <div class="col-md-4 text-right">
-                    <%= ago_in_words(workout.created_at) %>
+                <div class="col-md-6 text-right">
+                    <%= pluralize(workout.starred_users.size, "star") %> | created <%= ago_in_words(workout.created_at) %>
                 </div>
             </div>
         </div>
