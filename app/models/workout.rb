@@ -11,6 +11,9 @@ class Workout < ApplicationRecord
 
   accepts_nested_attributes_for :workout_exercises, allow_destroy: true
 
+  scope :featured, -> {joins(:stars).group(:'starable_id').order("count(starable_id) DESC").limit(1)}
+  
+  scope :featured_amount, -> (query){joins(:stars).group(:'starable_id').order("count(starable_id) DESC").limit(query)}
   scope :latest, -> (query){order(created_at: :desc).limit(query)}
   scope :search, -> (query){where("LOWER(name) LIKE LOWER(?)", "%#{query}%")}
   scope :muscles_search, -> (query){joins(:exercises).where('exercises.muscle_id': query)}
