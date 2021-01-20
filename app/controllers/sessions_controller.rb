@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to profile_path(@user.username)
     else
-      redirect_to login_path
+      redirect_to login_path, flash: { alert: "Invalid username, email, or password" }
     end
   end
 
