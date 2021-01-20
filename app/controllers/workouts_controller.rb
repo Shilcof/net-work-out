@@ -3,9 +3,9 @@ class WorkoutsController < ApplicationController
     def index
         if params[:username]
             @user = User.find_by_username!(params[:username])
-            @workouts = @user.workouts.includes(:muscles)
+            @workouts = @user.workouts.includes(:muscles, :user)
         else
-            @workouts = Workout.all.includes(:muscles)
+            @workouts = Workout.all.includes(:muscles, :user)
         end
         @muscles = Muscle.all
         @exercises = Exercise.all

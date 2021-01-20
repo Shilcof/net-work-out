@@ -33,7 +33,7 @@ class ExercisesController < ApplicationController
     end
     
     def show
-        @workouts = @exercise.workouts
+        @workouts = @exercise.workouts.includes(:muscles, :user)
     end
     
     def edit

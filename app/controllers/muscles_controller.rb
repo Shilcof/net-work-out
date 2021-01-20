@@ -19,7 +19,7 @@ class MusclesController < ApplicationController
     end
     
     def show
-        @workouts = @muscle.workouts
+        @workouts = @muscle.workouts.includes(:muscles, :user)
     end
     
     def edit
