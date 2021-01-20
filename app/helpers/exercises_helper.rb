@@ -7,9 +7,9 @@ module ExercisesHelper
 
     def new_exercise_link
         if @muscle
-            button_to "Add a new exercise", new_muscle_exercise_path(@muscle), method: :get, class: "btn btn-outline-success btn-block bg-white"
+            button_to "Add a new exercise", new_muscle_exercise_path(@muscle), method: :get, class: "btn btn-outline-success btn-block"
         else
-            button_to "Add a new exercise", new_exercise_path, method: :get, class: "btn btn-outline-success btn-block bg-white"
+            button_to "Add a new exercise", new_exercise_path, method: :get, class: "btn btn-outline-success btn-block"
         end
     end
 

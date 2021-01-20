@@ -10,12 +10,12 @@
                 </div>
             <% end %>
 
-                <div class="col-md-12">
-                    <%= label_tag "Don't see the exercise you are looking for?" %>
-                </div>
-                <div class="col-md-12">
-                    <%= new_exercise_link %>
-                </div>
+            <div class="col-md-12">
+                <%= label_tag "Don't see the exercise you are looking for?" if logged_in? %>
+            </div>
+            <div class="col-md-12">
+                <%= new_exercise_link if logged_in? %>
+            </div>
         </div>
     </aside>
 

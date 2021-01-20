@@ -14,12 +14,27 @@
                     <%= collection_select nil, :exercise_id, @exercises, :id, :name, {include_blank: "Search by exercise"}, {class: "form-control"} %>
                 </div>
 
+
+                <div data-toggle="buttons">
+                    <div class="col-md-6 mb-3">
+                        <label class="btn btn-outline-primary btn-block">
+                            <input type="radio" name="sort" id="new"> New
+                        </label>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="btn btn-outline-primary btn-block">
+                            <input type="radio" name="sort" id="stars"> Most stars
+                        </label>
+                    </div>
+                </div>
+
                 <div class="col-md-12 mb-3">
                     <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
                 </div>
             <% end %>
             <div class="col-md-12">
-                <%= button_to "New workout", new_workout_path, method: :get, class: "btn btn-outline-success btn-block" %>
+                <%= button_to "New workout", new_workout_path, method: :get, class: "btn btn-outline-success btn-block" if logged_in? %>
             </div>
         </div>
     </aside>
