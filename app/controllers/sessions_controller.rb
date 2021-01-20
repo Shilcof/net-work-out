@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to complete_signup_path(@user)
     else
-      redirect_to login_path
+      redirect_to login_path, flash: { alert: "Log in with google failed" }
     end
   end
 
