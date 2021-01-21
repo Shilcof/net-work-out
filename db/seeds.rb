@@ -153,7 +153,7 @@ def make_users
 end
 
 def make_workouts
-    USER.all.each do |user|
+    User.all.each do |user|
         rand(4..10).times do
             title = [WORKOUT_START.sample, WORKOUT_MIDDLE.sample, WORKOUT_END.sample].join(" ")
             information = "placeholder"
@@ -191,9 +191,9 @@ def make_workout_information(workout)
 end
 
 def star_workouts
-    @workouts = Workout.all.inlcudes
-    USER.all.each do |user|
-        @workouts.sample(@workouts.size/rand(3:6)).each do |workout|
+    @workouts = Workout.all
+    User.all.each do |user|
+        @workouts.sample(@workouts.size/rand(3..6)).each do |workout|
             user.stars.create(starable: workout)
         end
     end
