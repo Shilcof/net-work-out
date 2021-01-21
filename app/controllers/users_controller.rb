@@ -27,10 +27,10 @@ class UsersController < ApplicationController
         @workouts = @user.workouts.includes(:muscles, :user, :starred_users).latest(3)
     end
     
-    def edit # require current user or admin check
+    def edit 
     end
     
-    def update # require current user or admin checks
+    def update 
         @user.update(update_params)
         if @user.save
             redirect_to profile_path(@user.username)
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         end
     end
     
-    def destroy # require current user or admin check -- delete dependant workouts, but not muscles & exercises
+    def destroy 
         @user.destroy
         redirect_to users_path
     end

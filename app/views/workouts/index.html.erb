@@ -3,33 +3,33 @@
         <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border">
             <%= form_tag current_uri, method: :get do %>
                 <div class="col-md-12 mb-3">
-                    <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search by title" %>
+                    <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search by title", value: (params[:search] if params[:search].present?) %>
                 </div>
 
                 <div class="col-md-12 mb-3">
-                    <%= collection_select nil, :muscle_id, @muscles, :id, :name, {include_blank: "Search by muscle"}, {class: "form-control"} %>
+                    <%= collection_select nil, :muscle_id, @muscles, :id, :name, {include_blank: "Search by muscle", selected: (params[:muscle_id] if params[:muscle_id].present?)}, {class: "form-control"} %>
                 </div>
 
                 <div class="col-md-12 mb-3">
-                    <%= collection_select nil, :exercise_id, @exercises, :id, :name, {include_blank: "Search by exercise"}, {class: "form-control"} %>
+                    <%= collection_select nil, :exercise_id, @exercises, :id, :name, {include_blank: "Search by exercise", selected: (params[:exercise_id] if params[:exercise_id].present?)}, {class: "form-control"} %>
                 </div>
 
-                <div data-toggle="buttons" class="col-md-12 mb-2 row btn-group">
-                    <div class="col-md-6 pl-0 pr-2 mb-0">
+                <div data-toggle="buttons" class="col-md-12 mb-2 form-row btn-group">
+                    <div class="col-md-6 mb-0">
                         <label class="btn btn-outline-secondary btn-block">
-                            <input type="radio" name="sort" id="new" value="new"> New
+                            <%= radio_button_tag "sort", "new", (true unless params[:sort] == "stars") %>New
                         </label>
                     </div>
 
-                    <div class="col-md-6 pr-0 pl-2 mb-0">
+                    <div class="col-md-6 mb-0">
                         <label class="btn btn-outline-secondary btn-block">
-                            <input type="radio" name="sort" id="stars"  value="stars"> Stars
+                            <%= radio_button_tag "sort", "stars", (true if params[:sort] == "stars") %>Stars
                         </label>
                     </div>
                 </div>
 
                 <div class="col-md-12 mb-3">
-                    <%= number_field :amount, nil, {placeholder: "Choose how many to display", class: "form-control"} %>
+                    <%= number_field :amount, nil, {placeholder: "Choose how many to display", value: (params[:amount] if params[:amount].present?), class: "form-control"} %>
                 </div>
 
                 <div class="col-md-12 mb-3">

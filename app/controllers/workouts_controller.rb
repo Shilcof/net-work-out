@@ -23,10 +23,6 @@ class WorkoutsController < ApplicationController
         else
             @workouts = @workouts.latest(amount).search(params[:search]).muscles_search(params[:muscle_id]).exercises_search(params[:exercise_id])
         end
-        # @workouts = @workouts.search(params[:search]) if params[:search].present?
-        # @workouts = @workouts.muscles_search(params[:muscle_id]) if params[:muscle_id].present?
-        # @workouts = @workouts.exercises_search(params[:exercise_id]) if params[:exercise_id].present?
-        # @workouts = @workouts.reverse
     end
     
     def new
