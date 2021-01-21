@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
     def admin_requested=(input)
         if input == "1"
-            build_admin_request unless admin_request
+            build_admin_request unless admin_request || admin
         end
     end
 

@@ -8,4 +8,9 @@ class AdminRequestsController < ApplicationController
         ar.destroy
         redirect_to users_path
     end
+
+    def destroy
+        User.find(params[:id]).update(admin: false)
+        redirect_to users_path
+    end
 end

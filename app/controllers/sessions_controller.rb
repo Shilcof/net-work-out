@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
   private
 
   def complete_params
-    params.require(:user).permit(:admin, :username)
+    params.require(:user).permit(:admin_requested, :username)
   end
 
   def auth

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :stars, only: [:create, :destroy]
   
-  resources :admin_requests, only: [:update]
+  resources :admin_requests, only: [:update, :destroy]
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

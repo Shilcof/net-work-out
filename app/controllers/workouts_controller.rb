@@ -14,9 +14,9 @@ class WorkoutsController < ApplicationController
         @muscles = Muscle.all
         @exercises = Exercise.all
         
-        amount = params[:amount].first
+        amount = params[:amount].first if params[:amount]
         
-        amount = 10 if amount.blank? || !amount.try(:to_i) || amount.to_i < 1
+        amount ||= 10 if amount.blank? || !amount.try(:to_i) || amount.to_i < 1
 
         if params[:sort] == "stars"
             @workouts = @workouts.most_starred(amount).search(params[:search]).muscles_search(params[:muscle_id]).exercises_search(params[:exercise_id])
