@@ -3,8 +3,8 @@
         <div class="p-3 bg-light rounded navbar-nav ml-auto text-center border <%= "border-warning" if starred?(@muscle) %>">
             <div class="py-3">
                 <%= star_object(@muscle) %><br>
-                <%= content_tag :h3, @muscle.name %>
-                <p><%= link_to "Exercises", muscle_exercises_path(@muscle) %></p>
+                <%= content_tag :h3, @muscle.name %><br>
+                <%= button_to "Exercises", muscle_exercises_path(@muscle) ,method: :get, class: "btn btn-outline-success btn-block" %><br>
                 <%= content_tag :p, @muscle.html %>
                 <%= button_to "Edit muscle", edit_muscle_path(@muscle) ,method: :get, class: "btn btn-outline-primary btn-block" if admin? %><br>
                 <%= button_to "Delete muscle", muscle_path(@muscle) ,method: :delete, class: "btn btn-outline-danger btn-block" if admin? %>
