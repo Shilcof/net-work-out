@@ -3,9 +3,10 @@ class AdminRequestsController < ApplicationController
     before_action :redirect_if_not_admin
 
     def update
-        ar = AdminRequest.find(params[:id])
-        ar.user.update(admin: true)
-        ar.destroy
+        @ar = AdminRequest.find(params[:id])
+        @ar.user.update(admin: true)
+        AdminRequestMailer.with(ar: @ar).admin_granted_email.deliver_now
+        @ar.destroy
         redirect_to users_path
     end
 

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     before_action :redirect_if_not_admin, only: [:index]
 
     def index
-        @users = User.all
+        @users = User.all.includes(:admin_request)
     end
     
     def new
