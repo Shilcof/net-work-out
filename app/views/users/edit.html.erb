@@ -3,22 +3,24 @@
     <%= alerts %>
     
     <%= form_for @user, url: user_path(@user) do |f| %>
-    <div class="form-row" >
-        <div class="col-md-12 mb-3">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: form_class(@user, :name) %>
-            <%= invalid_feedback(@user, :name) %>
+        <div class="form-row" >
+            <div class="col-md-12 mb-3">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: form_class(@user, :name) %>
+                <%= invalid_feedback(@user, :name) %>
+            </div>
+            <div class="col-md-12 mb-3">
+                <%= f.label :bio %>
+                <%= f.text_area :bio, class: form_class(@user, :bio), rows: 10 %>
+                <%= invalid_feedback(@user, :bio) %>
+            </div>
         </div>
-        <div class="col-md-12 mb-3">
-            <%= f.label :bio %>
-            <%= f.text_area :bio, class: form_class(@user, :bio), rows: 10 %>
-            <%= invalid_feedback(@user, :bio) %>
-        </div>
-    </div>
-        <div class="form-group">
-            <%= f.check_box :admin_requested %>
-            <%= f.label :admin_requested, "Request admin rights" %>
-        </div>
+        <% unless @user.admin || @user.admin_request %>
+            <div class="form-group">
+                <%= f.check_box :admin_requested %>
+                <%= f.label :admin_requested, "Request admin rights" %>
+            </div>
+        <% end %>
         <%= f.submit "Update", class: "btn btn-outline-primary btn-block" %>
     <% end %>
 </div>
