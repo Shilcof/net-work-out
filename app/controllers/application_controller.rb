@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
 
     def redirect_if_username_required
-        return redirect_to complete_signup_path(current_user) if current_user && current_user.username.blank?
+        return redirect_to complete_signup_path(current_user) if username_required?
     end
 
     def redirect_if_logged_in # Login, Signup
