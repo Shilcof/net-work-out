@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :workouts, :dependent => :destroy
     has_many :muscles, through: :workouts
-    has_many :admin_requests
+    has_one :admin_request
     has_many :stars
     has_many :starred_workouts, through: :stars, source: :starable, source_type: 'Workout'
 
@@ -15,8 +15,14 @@ class User < ApplicationRecord
 
     validates :bio, length: { maximum: 500 }, on: :update
 
+    def admin_requested
+        !!admin_request
+    end
+
     def admin_requested=(input)
-        
+        if input == "1"
+            build_admin_request unless admin_request
+        end
     end
 
     def oauth
