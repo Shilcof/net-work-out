@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :stars, only: [:create, :destroy]
+  
+  resources :admin_requests, only: [:update]
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

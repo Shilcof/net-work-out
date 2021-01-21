@@ -1,13 +1,16 @@
 <div class="card mb-3">
     <div class="card-body bg-light">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="text-center pt-2"><%= user.username %></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <%= button_to "Accept admin request", admin_request_path(user.admin_request.id), method: :patch, class: "btn btn-outline-success btn-block" if user.admin_request %>
+            </div>
+            <div class="col-md-3">
                 <%= button_to "View profile", profile_path(user.username), method: :get, class: "btn btn-outline-primary btn-block" %>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <%= button_to "Delete user", user, method: :delete, class: "btn btn-outline-danger btn-block" %>
             </div>
         </div>
