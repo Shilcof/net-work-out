@@ -20,7 +20,7 @@ DATA = {
     ],
     exercise_keys: ["name", "information", "muscle_id"],
     exercises: [
-        ["Shrug ", "The lifter stands erect, hands about shoulder width apart, and slowly raises the shoulders as high as possible, and then slowly lowers them, while not bending the elbows, or moving the body at all. The lifter may not have as large a range of motion as in a normal shrug done for active flexibility. It is usually considered good form if the slope of the shoulders is horizontal in the elevated position.\r\n\r\nA barbell, dumbbells, trap bar, resistance bands or a Smith machine may be used for resistance, and overhand, inside, outside, underhand or mixed grip can be used. The barbell can be held in front of the thighs, resting on the quadriceps, or behind, resting on the hamstrings. Using these excludes inside and outside grips. One or two dumbbells or kettlebells can also be used, together or opposite one another. A trapbar can also be used, necessitating an inside grip. Standing calf raise machines can also be used to execute the shrugging movement, by resting the pads on the shoulders and trying to raise the shoulders as high as possible.", 1],
+        ["Shrug", "The lifter stands erect, hands about shoulder width apart, and slowly raises the shoulders as high as possible, and then slowly lowers them, while not bending the elbows, or moving the body at all. The lifter may not have as large a range of motion as in a normal shrug done for active flexibility. It is usually considered good form if the slope of the shoulders is horizontal in the elevated position.\r\n\r\nA barbell, dumbbells, trap bar, resistance bands or a Smith machine may be used for resistance, and overhand, inside, outside, underhand or mixed grip can be used. The barbell can be held in front of the thighs, resting on the quadriceps, or behind, resting on the hamstrings. Using these excludes inside and outside grips. One or two dumbbells or kettlebells can also be used, together or opposite one another. A trapbar can also be used, necessitating an inside grip. Standing calf raise machines can also be used to execute the shrugging movement, by resting the pads on the shoulders and trying to raise the shoulders as high as possible.", 1],
         ["Shoulder fly", "The shoulder fly (also known as a lateral raise) works the deltoid muscle of the shoulder. The movement starts with the arms straight, and the hands holding weights at the sides or in front of the body. Body is in a slight forward-leaning position with hips and knees bent a little. Arms are kept straight or slightly bent, and raised through an arc of movement in the coronal plane that terminates when the hands are at approximately shoulder height.Weights are lowered to the starting position, completing one rep. When using a cable machine the individual stands with the coronal plane in line with the pulley, which is at or near the ground. The exercise can be completed one shoulder at a time (with the other hand used to stabilize the body against the weight moved), or with both hands simultaneously if two parallel pulleys are available.", 2],
         ["Overhead press", "The overhead press (abbreviated OHP), also referred to as a shoulder press, military press, or simply the press, is a weight training exercise with many variations. It is typically performed while either standing or sitting, in which a weight is pressed straight upwards from racking position until the arms are locked out overhead, while the legs, lower back and abs maintain balance. The exercise helps build muscular shoulders with bigger arms, and is one of the most difficult compound upper-body exercises.\r\n\r\nThe overhead press is set up by taking a barbell or other weight and putting it in a racking position. This can be done by taking the weight from a rack or by cleaning the weight from the floor (clean and press). The weight is then pressed to overhead until the elbows are fully locked out. As the weight clears the head, the lifter leans forward slightly or comes directly under, in order to keep balance. As the weight is lowered back to the racking position and clears the head again, the lifter leans slightly back. The overhead press is a highly effective compound full-body exercise.", 2],
         ["Bench press", "The bench press is an upper-body weight training exercise in which the trainee presses a weight upwards while lying on a weight training bench. The exercise uses the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used.\r\n\r\nThe barbell bench press is one of three lifts in the sport of powerlifting alongside the deadlift and squat, and is the only lift in the sport of Paralympic powerlifting. It is also used extensively in weight training, bodybuilding, and other types of training to develop the chest muscles.", 3],
@@ -37,25 +37,166 @@ DATA = {
         ["Leg curl", "The leg curl, also known as the hamstring curl, is an isolation exercise that targets the hamstring muscles. The exercise involves flexing the lower leg against resistance towards the buttocks. There are three types of leg curls. There are seated leg curls, laying leg curls, and standing leg curls.", 8],
         ["Bent-over row", "A bent-over row (or barbell row) is a weight training exercise that targets a variety of back muscles. Which ones are targeted varies on form. The bent over row is often used for both bodybuilding and powerlifting. It is a good exercise for increasing strength and size.", 9],
         ["Pull-up", "A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands and pulls up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.\r\n\r\nThe term chin-up, traditionally referring to a pull-up with the chin brought over the top of a bar, was used in the 1980s to refer to a pronated, or overhand, grip, with a supinated, or underhand, grip being called a 'reverse-grip' chin-up. In later decades, this usage has inverted, with some using 'chin-up' to refer to a pull-up done with a supinated hand position, while 'pull-up' refers specifically to the exercise done with a pronated hand position.\r\n\r\n Pull-ups use many different muscles of the upper body, including the latissimus dorsi and the biceps brachii.", 9]
-    ],
-    user_keys: ["name", "information"],
-    users: [["Trapezius (Traps)", "The trapezius is a large paired surface muscle that extends longitudinally from the occipital bone to the lower thoracic vertebrae of the spine and laterally to the spine of the scapula. It moves the scapula and supports the arm.\r\n\r\n The trapezius has three functional parts: an upper (descending) part which supports the weight of the arm; a middle region (transverse), which retracts the scapula; and a lower (ascending) part which medially rotates and depresses the scapula."],
-        ["Shoulders", "The deltoid muscle is the muscle forming the rounded contour of the human shoulder. It is also known as the 'common shoulder muscle', particularly in other animals such as the domestic cat. Anatomically, it appears to be made up of three distinct sets of fibers. However, electromyography suggests that it consists of at least seven groups that can be independently coordinated by the nervous system."],
-        ["Chest", "The pectoralis major (from Latin pectus 'breast') is a thick, fan-shaped muscle, situated at the chest of the human body. It makes up the bulk of the chest muscles and lies under the breast. Beneath the pectoralis major is the pectoralis minor, a thin, triangular muscle. The pectoralis major's primary functions are flexion, adduction, and internal rotation of the humerus. The pectoral major may colloquially be referred to as 'pecs', 'pectoral muscle' or 'chest muscle' due to it being the largest and most superficial muscle in the chest area."],
-        ["Biceps", "The biceps (Latin: musculus biceps brachii, 'two-headed muscle of the arm', sometimes abbreviated to biceps brachii) is a large muscle that lies on the front of the upper arm between the shoulder and the elbow. Both heads of the muscle arise on the scapula and join to form a single muscle belly which is attached to the upper forearm. While the biceps crosses both the shoulder and elbow joints, its main function is at the elbow where it flexes the forearm and supinates the forearm. Both these movements are used when opening a bottle with a corkscrew: first biceps screws in the cork (supination), then it pulls the cork out (flexion)."],
-        ["Forearms", "The forearm is the region of the upper limb between the elbow and the wrist. The term forearm is used in anatomy to distinguish it from the arm, a word which is most often used to describe the entire appendage of the upper limb, but which in anatomy, technically, means only the region of the upper arm, whereas the lower 'arm' is called the forearm. It is homologous to the region of the leg that lies between the knee and the ankle joints, the crus.\r\n\r\n The forearm contains two long bones, the radius and the ulna, forming the radioulnar joint. The interosseous membrane connects these bones. Ultimately, the forearm is covered by skin, the anterior surface usually being less hairy than the posterior surface."],
-        ["Abdominals", "Abdominal exercises are a type of strength exercise that affect the abdominal muscles (colloquially known as the stomach muscles or 'abs'). Your abdominal consist of four muscles which are your rectus abdomens, internal oblique, external oblique, and transversus abdominis. When performing abdominal exercises it is important to understand the effects, functions, the types of exercises, and think about how to perform this exercise safely."],
-        ["Quadriceps", "The quadriceps femoris muscle (also called the quadriceps extensor, quadriceps or quads) is a large muscle group that includes the four prevailing muscles on the front of the thigh.\r\n\r\n It is the great extensor muscle of the knee, forming a large fleshy mass which covers the front and sides of the femur. The name derives from Latin four-headed muscle of the femur."],
-        ["Hamstrings", "In human anatomy, a hamstring is any one of the three posterior thigh muscles in between the hip and the knee (from medial to lateral: semimembranosus, semitendinosus and biceps femoris). The hamstrings are quite susceptible to injury.\r\n\r\n In quadrupeds, the hamstring is the single large tendon found behind the knee or comparable area."],
-        ["Lats", "The latissimus dorsi is a large, flat muscle on the back that stretches to the sides, behind the arm, and is partly covered by the trapezius on the back near the midline. The word latissimus dorsi (plural: latissimi dorsi) comes from Latin and means 'broadest [muscle] of the back', from 'latissimus' (Latin: broadest)' and 'dorsum' (Latin: back). The pair of muscles are commonly known as 'lats', especially among bodybuilders. The latissimus dorsi is the largest muscle in the upper body.\r\n\r\n The latissimus dorsi is responsible for extension, adduction, transverse extension also known as horizontal abduction, flexion from an extended position, and (medial) internal rotation of the shoulder joint. It also has a synergistic role in extension and lateral flexion of the lumbar spine.\r\n\r\n Due to bypassing the scapulothoracic joints and attaching directly to the spine, the actions the latissimi dorsi have on moving the arms can also influence the movement of the scapulae, such as their downward rotation during a pull up."]
-    ],
+    ]
 }
 
+USERS = [
+    "John Smith",
+    "Owen Jones",
+    "Mark Wilson",
+    "Sam Piper",
+    "Tony Watson",
+    "Seamus Austin",
+    "Peter Hamill",
+    "Paul Newman",
+    "Jane Taylor",
+    "Stacy Foster",
+    "Mary Johnson",
+    "Elizabeth Walker",
+    "Annie Potter",
+    "Pauline Hooper",
+    "Jennifer Hamilton",
+    "Roger Taylor",
+    "Suzanne Jackson",
+    "Danny Jackobs"
+]
 
+BIOS = [
+    "Gym junkie.",
+    "Live for the deadlifts.",
+    "Everyday is leg day.",
+    "UK Based.",
+    "Everyone needs a tune-up.",
+    "No pain No gain.",
+    "It’s never too late to feel great.",
+    "Light weight, yeah buddy.",
+    "Strength does not come from winning. Your struggles develop your strengths.",
+    "Failure is not an option. Everyone has to succeed.",
+    "We all have great inner power. The power is self-faith.",
+    "There are no shortcuts.",
+    "The hardest part is walking out the front door.",
+    "Ain't nothin' but a peanut.",
+    "If you always do what you’ve always done..you’ll always get what you always got.",
+    "Aspiring bodybuilder.",
+    "Push harder than yesterday if you want a different tomorrow.",
+    "Fitness is not a destination it is a way of life.",
+    "Crossfit is life."
+]
 
-def main
-    # make_muscles
-    # make_exercises
+WORKOUT_START = [
+    "Killer",
+    "Ultimate",
+    "Professional",
+    "Serious",
+    "Any-time",
+    "Low-impact",
+    "Recovery",
+    "Monster",
+    "Quick",
+    "High intensity",
+    "Weekend"
+]
+
+WORKOUT_MIDDLE = [
+    "Full Body",
+    "Stamina",
+    "Leg",
+    "Strength",
+    "Abs",
+    "Booty",
+    "Mobility",
+    "Fitness",
+    "Cardio",
+    "Interval"
+]
+
+WORKOUT_END = [
+    "Buster",
+    "Burner",
+    "Obliterator",
+    "Trainer",
+    "Workout",
+    "Crusher",
+    "Blast",
+    "Blaster",
+    "Routine",
+    "Boot Camp",
+    "Circuits"
+]
+
+def make_admin
+    User.create(username: "Admin", email: "admin@admin.com", password: "admin", admin: true)
+end
+
+def make_users
+    USERS.each do |user|
+        params = {}
+        username = user.split.collect.with_index{|n,i| i == 0 ? n[0] : n}.join
+        params[:username] = username
+        params[:name] = user
+        params[:email] = username + "@email.com"
+        params[:password] = username
+        
+        rng = rand(1..10)
+        if rng == 1
+            params[:admin] = true
+        else rng < 4
+            params[:admin_requested] = "1"
+        end
+
+        bio = BIOS.sample(rand(2..5)).join(" ")
+
+        params[:bio] = bio
+
+        User.create(params)
+    end
+end
+
+def make_workouts
+    USER.all.each do |user|
+        rand(4..10).times do
+            title = [WORKOUT_START.sample, WORKOUT_MIDDLE.sample, WORKOUT_END.sample].join(" ")
+            information = "placeholder"
+            workout = user.workouts.create(name: title, information: information)
+            rand(3..6).times do
+                workout.workout_exercises.create(exercise: @exercise.sample, sets: rand(1..5), reps: rand(1..20)) if workout
+            end
+            make_workout_information(workout)
+        end
+    end
+end
+
+FILL_ONE = [
+    "maximise",
+    "enhance",
+    "recover",
+    "build",
+    "train",
+    "magnify",
+    "improve",
+    "boost"
+]
+
+FILL_TWO = [
+    "performance",
+    "ability",
+    "productivity",
+    "gains",
+    "output",
+    "work rate"
+]
+
+def make_workout_information(workout)
+    workout.update(information: (["This", workout.name, "is designed to", FILL_ONE.sample, FILL_TWO.sample, "through training "].join(" ") + workout.workout_exercises.collect{|we| we.exercise.name }.join(" ") + "."))
+end
+
+def star_workouts
+    @workouts = Workout.all.inlcudes
+    USER.all.each do |user|
+        @workouts.sample(@workouts.size/rand(3:6)).each do |workout|
+            user.stars.create(starable: workout)
+        end
+    end
 end
 
 def make_muscles
@@ -76,6 +217,16 @@ def make_exercises
         end
         new_exercise.save
     end
+end
+
+def main
+    @exercise = Exercise.all
+    make_muscles
+    make_exercises
+    make_users
+    make_admin
+    make_workouts
+    star_workouts
 end
 
 main
