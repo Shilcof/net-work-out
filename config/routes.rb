@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   resources :workouts
 
   get 'signup', to: 'users#new'
-
   resources :users, except: [:new, :show, :edit]
   get '/:username', to: 'users#show', as: :profile
   get '/:username/edit', to: 'users#edit', as: :edit_profile
