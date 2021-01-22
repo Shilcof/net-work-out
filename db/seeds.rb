@@ -26,6 +26,7 @@ DATA = {
         ["Bench press", "The bench press is an upper-body weight training exercise in which the trainee presses a weight upwards while lying on a weight training bench. The exercise uses the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used.\r\n\r\nThe barbell bench press is one of three lifts in the sport of powerlifting alongside the deadlift and squat, and is the only lift in the sport of Paralympic powerlifting. It is also used extensively in weight training, bodybuilding, and other types of training to develop the chest muscles.", 3],
         ["Chest fly", "The chest fly or pectoral fly (abbreviated to pec fly) primarily works the pectoralis major muscles to move the arms horizontally forward. If medially (internally) rotated, it is assisted in this by the anterior (front) head of the deltoideus in transverse flexion. If laterally (externally) rotated, the contribution of the deltoid is lessened and the pec major is strongly emphasized as the transverse adductor.\r\n\r\nThe hands are usually brought out further than the elbows, in which case the flexors contract isometrically to inhibit undesired excess extension of the elbow. Muscles which do this are the biceps brachii, the brachialis and the brachioradialis. The biceps may also play a limited role in shoulder flexion. The straighter the elbow is, the more stretch in these muscles. For safety, many avoid locking out the joint.", 3],
         ["Press-up", "A press-up (or push-up in American English) is a common calisthenics exercise beginning from the prone position. By raising and lowering the body using the arms, press-ups exercise the pectoral muscles, triceps, and anterior deltoids, with ancillary benefits to the rest of the deltoids, serratus anterior, coracobrachialis and the midsection as a whole. Press-ups are a basic exercise used in civilian athletic training or physical education and commonly in military physical training. They are also a common form of punishment used in the military, school sport, and some martial arts disciplines.", 3],
+        ["Dip", "A dip is an upper-body strength exercise. Narrow, shoulder-width dips primarily train the triceps, with major synergists being the anterior deltoid, the pectoralis muscles (sternal, clavicular, and minor), and the rhomboid muscles of the back (in that order). Wide arm training places additional emphasis on the pectoral muscles, similar in respect to the way a wide grip bench press would focus more on the pectorals and less on the triceps.", 3],
         ["Biceps curl", "Biceps curl is a general term for a series of strength exercises that involve brachioradialis, front deltoid and the main target on biceps brachii. Includes variations using barbell, dumbbell and resistance band, etc. The common point amongst them is the trainee lifting a certain amount of weight to contracting the biceps brachii, and tuck in their arms to the torso during the concentric phase. Once the biceps brachii is fully contracted, then return the weight to starting position during the eccentric phase.", 4],
         ["Chin-up", "The chin-up (also known as a chin or chinup) is a strength training exercise. People frequently do this exercise with the intention of strengthening muscles such as the latissimus dorsi and biceps, which extend the shoulder and flex the elbow, respectively. In this maneuver, the palms are faced towards the body.", 4],
         ["Wrist curl", "The wrist curl is a weight training exercise for developing just the wrist flexor muscles of the forearm. It is therefore an isolation exercise. Ideally, it should be done in combination with the 'reverse wrist curl' (also called wrist extension) to ensure equal development of the wrist flexor and wrist extensor muscles.\r\n\r\nWrist curls can be performed with a dumbbell or with both hands holding a barbell. To perform a seated wrist curl, the lifter should be seated on a bench with knees bent and the forearm(s) resting on the thigh, or with forearms on a bench and hands hanging off the edge. The palm should be facing up and the hand should be free to move completely up and down. At the starting point, the wrist should be bent back so that the fingers are almost pointing down at the floor. In a steady motion, the lifter should raise the weight by using the forearm muscles to bring the hand up as far as possible. The forearm itself should remain resting on the thigh. Then the weight should be slowly lowered back down to the starting point.", 5],
@@ -187,7 +188,7 @@ FILL_TWO = [
 ]
 
 def make_workout_information(workout)
-    workout.update(information: (["This", workout.name, "is designed to", FILL_ONE.sample, FILL_TWO.sample, "through training "].join(" ") + workout.workout_exercises.collect{|we| we.exercise.name }.join(", ") + "."))
+    workout.update(information: (["This", workout.name, "is designed to", FILL_ONE.sample, FILL_TWO.sample, "through training "].join(" ") + workout.workout_exercises.collect{|we| we.exercise.name }.join(", ").gsub(/.*\K,/, ', and') + "."))
 end
 
 def star_workouts
@@ -199,9 +200,17 @@ def star_workouts
     end
 end
 
-def predate_workout
+def predate_workouts
     Workout.all.each do |workout|
-        workout.created_at -= rand(1..5000000)
+        workout.created_at -= rand(1..1000000)
+        workout.save
+    end
+end
+
+def predate_users
+    User.all.each do |user|
+        user.created_at = user.workouts.order(:created_at).limit(1).first.created_at - 1000
+        user.save
     end
 end
 
@@ -233,6 +242,8 @@ def main
     make_admin
     make_workouts
     star_workouts
+    predate_workouts
+    predate_users
 end
 
 main
