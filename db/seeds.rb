@@ -140,7 +140,7 @@ def make_users
         rng = rand(1..10)
         if rng == 1
             params[:admin] = true
-        else rng < 4
+        elsif rng < 4
             params[:admin_requested] = "1"
         end
 
@@ -187,7 +187,7 @@ FILL_TWO = [
 ]
 
 def make_workout_information(workout)
-    workout.update(information: (["This", workout.name, "is designed to", FILL_ONE.sample, FILL_TWO.sample, "through training "].join(" ") + workout.workout_exercises.collect{|we| we.exercise.name }.join(" ") + "."))
+    workout.update(information: (["This", workout.name, "is designed to", FILL_ONE.sample, FILL_TWO.sample, "through training "].join(" ") + workout.workout_exercises.collect{|we| we.exercise.name }.join(", ") + "."))
 end
 
 def star_workouts
@@ -196,6 +196,12 @@ def star_workouts
         @workouts.sample(@workouts.size/rand(3..6)).each do |workout|
             user.stars.create(starable: workout)
         end
+    end
+end
+
+def predate_workout
+    Workout.all.each do |workout|
+        workout.created_at -= rand(1..5000000)
     end
 end
 
