@@ -6,7 +6,7 @@ class Exercise < ApplicationRecord
     has_many :stars, as: :starable
     has_many :starred_users, through: :stars, source: :user
 
-    has_one_attached :images
+    has_one_attached :image
     
     validates :name, :information, no_symbols: true, presence: true
     validates :name, uniqueness: true

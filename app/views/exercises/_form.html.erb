@@ -19,6 +19,10 @@
                 <%= f.text_area :information, class: form_class(@exercise, :information), rows: 10 %>
                 <%= invalid_feedback(@exercise, :information) %>
             </div>
+            <div class="col-md-12 mb-3">
+                <%= f.label :image %>
+                <%= f.file_field :image, class: form_class(@exercise, :image) %>
+            </div>
             <%= exercise_form_muscle_field(f) %>
         </div>
         <%= f.submit class: "btn btn-outline-primary btn-block" %>

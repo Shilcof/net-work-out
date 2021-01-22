@@ -4,6 +4,7 @@
             <div class="py-3">
                 <%= star_object(@exercise) %><br>
                 <%= content_tag :h3, @exercise.name %>
+                <%= image_tag url_for(@exercise.image), { class: "img-fluid w-100 mb-3" } if @exercise.image.attached? %>
                 <p> Muscle trained: <%= link_to @exercise.muscle.name, @exercise.muscle %></p>
                 <%= content_tag :p, @exercise.html %>
                 <%= button_to "Edit exercise", edit_exercise_path(@exercise) ,method: :get, class: "btn btn-outline-primary btn-block" if admin? %><br>

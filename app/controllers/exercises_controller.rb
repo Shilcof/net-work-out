@@ -23,7 +23,10 @@ class ExercisesController < ApplicationController
     
     def create
         @exercise = Exercise.new(exercise_params)
+        byebug
         if @exercise.save
+            @exercise.image.purge
+            @exercise.image.attach(params[:exercise][:image])
             redirect_to @exercise
         else
             check_valid(@exercise)
@@ -38,13 +41,17 @@ class ExercisesController < ApplicationController
     end
     
     def edit
+        @muscles = Muscle.all
     end
     
     def update
         @exercise.update(exercise_params)
         if @exercise.save
+            @exercise.image.purge
+            @exercise.image.attach(params[:exercise][:image])
             redirect_to @exercise
         else
+            @muscles = Muscle.all
             check_valid(@exercise)
             render :edit
         end
