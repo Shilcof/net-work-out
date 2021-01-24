@@ -25,8 +25,10 @@ class ExercisesController < ApplicationController
         @exercise = Exercise.new(exercise_params)
         byebug
         if @exercise.save
-            @exercise.image.purge
-            @exercise.image.attach(params[:exercise][:image])
+            if params[:exercise][:image]
+                @exercise.image.purge
+                @exercise.image.attach(params[:exercise][:image])
+            end
             redirect_to @exercise
         else
             check_valid(@exercise)
@@ -47,8 +49,10 @@ class ExercisesController < ApplicationController
     def update
         @exercise.update(exercise_params)
         if @exercise.save
-            @exercise.image.purge
-            @exercise.image.attach(params[:exercise][:image])
+            if params[:exercise][:image]
+                @exercise.image.purge
+                @exercise.image.attach(params[:exercise][:image])
+            end
             redirect_to @exercise
         else
             @muscles = Muscle.all

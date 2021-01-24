@@ -2,7 +2,7 @@ module LayoutsHelper
 
     def navbar_options
         if username_required?
-            render 'layouts_username_required_nav'
+            render 'layouts/username_required_nav'
         elsif admin?
             render 'layouts/admin_nav'
         elsif logged_in?
