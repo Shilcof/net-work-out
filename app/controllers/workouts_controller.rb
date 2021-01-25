@@ -54,35 +54,11 @@ class WorkoutsController < ApplicationController
     end
     
     def update
-        @workout.attributes=(info_params)
+        @workout.attributes=(workout_params)
         if params[:add_exercise]
-
-            if !workout_params[:workout_exercises_attributes].blank?
-                workout_params[:workout_exercises_attributes].values.each do |attributes|
-                    if attributes[:id]
-                        WorkoutExercise.find(attributes[:id]).update(attributes.except(:_destroy, :id))
-                    else
-                        @workout.workout_exercises.build(attributes.except(:_destroy)) 
-                    end
-                end
-            end
-
             @workout.workout_exercises.build
-
         elsif params[:remove_exercise]
-
-            if !workout_params[:workout_exercises_attributes].blank?
-                workout_params[:workout_exercises_attributes].values.each do |attributes|
-                    if attributes[:id]
-                        WorkoutExercise.find(attributes[:id]).update(attributes.except(:_destroy, :id)) 
-                        WorkoutExercise.find(attributes[:id]).destroy if attributes[:_destroy] == "1"
-                    else
-                        @workout.workout_exercises.build(attributes.except(:_destroy)) unless attributes[:_destroy] == "1"
-                    end
-                end
-            end
-
-        elsif @workout.update(workout_params)
+        elsif @workout.save
             return redirect_to @workout
         end
         check_valid(@workout)
