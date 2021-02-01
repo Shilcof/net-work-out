@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
     def index
-        @workout = Workout.featured
+        @workout = logged_in? ? current_user.starred_workouts.sample : Workout.all.sample
     end
 end
